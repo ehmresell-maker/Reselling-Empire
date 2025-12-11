@@ -30,43 +30,109 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center; /* Keskittää otsikot */
             padding: 50px 20px;
             min-height: 100vh;
             box-sizing: border-box;
+            width: 100%; /* Varmistaa, että body ottaa kaiken tilan */
         }
         
         .main-header {
             font-size: 3em;
             font-weight: 700;
-            margin-bottom: 40px;
+            margin-bottom: 10px; 
             color: #FFFFFF;
             text-align: center;
         }
 
-        /* UUSI TYYLI: Tuotekorttien asettelusäiliö */
-        .product-grid {
+        .sub-header {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #aaaaaa;
+            margin-top: 0;
+            margin-bottom: 50px; 
+            text-align: center;
+        }
+        
+        /* UUSI TYYLI: Pääsäiliö vasen/keski asetteluun */
+        .content-wrapper {
             display: flex;
             flex-direction: column; /* Oletus: Allekkain (puhelin/pieni näyttö) */
-            align-items: center;
-            gap: 30px; /* Tilaa korttien välillä pystysuunnassa */
+            align-items: center; /* Keskittää elementit mobiilissa */
+            gap: 30px; 
             width: 100%;
-            margin-bottom: 50px; /* Tilaa korttien ja footerin välille */
+            max-width: 1200px; /* Estää sivun leviämisen liian leveäksi */
         }
+
+        /* Tuotekorttien ryhmä (Airpods ja Sp5der) */
+        .product-grid {
+            display: flex;
+            flex-direction: column; /* Mobiilissa kortit allekkain */
+            align-items: center;
+            gap: 30px; 
+            width: 100%;
+        }
+
 
         /* MEDIA QUERY: Kun näytön leveys on vähintään 768px (pöytäkone) */
         @media (min-width: 768px) {
-            .product-grid {
-                flex-direction: row; /* Isolla näytöllä: Vierekkäin */
-                justify-content: center;
+            /* Asettaa vasemman ja keskialueen vierekkäin */
+            .content-wrapper {
+                flex-direction: row; 
+                justify-content: space-between; /* Erottaa Info Boxin ja Kortit */
                 align-items: flex-start;
-                gap: 50px; /* Tilaa korttien välillä vaakasuunnassa */
+                width: 100%;
+            }
+
+            /* Antaa info-boxille tilaa olla vasemmalla */
+            .info-box-wrapper {
+                margin-right: 50px; /* Tilaa info-boxin ja korttien väliin */
+            }
+
+            /* Keskittää kaksi korttia omassa säiliössään */
+            .product-grid {
+                flex-direction: row; 
+                justify-content: center; /* Keskittää Airpods ja Sp5der kortit */
+                margin: 0 auto; /* Keskittää korttiryhmän Content Wrapperin sisällä */
             }
         }
 
+        /* UUSI TYYLI: INFO LAATIKKO */
+        .info-box {
+            width: 250px; /* Pienempi leveys */
+            height: 350px; /* Pienempi korkeus */
+            background-color: rgba(59, 66, 77, 0.9);
+            border: 1px solid #444b56;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease-in-out;
+            
+            /* Keskittää tekstin pysty- ja vaakasuunnassa */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box; 
+        }
+        
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+        }
+
+        .info-text {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #ffffff;
+            padding: 0 10px;
+        }
+
+
+        /* TUOTEKORTTI TYYLIT */
         .product-card {
             width: 320px;
-            height: 500px; /* TÄRKEÄ MUUTOS: Kiinteä korkeus kaikille korteille */
+            height: 500px; /* Kiinteä korkeus kaikille korteille */
             background-color: rgba(59, 66, 77, 0.9);
             border: 1px solid #444b56;
             border-radius: 12px;
@@ -75,11 +141,11 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s ease-in-out;
 
-            /* Sisällön pystyasettelun hallinta Flexboxilla kortin sisällä */
+            /* Sisällön pystyasettelun hallinta */
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Sisältö jakautuu tasaisesti */
-            box-sizing: border-box; /* Sisältää paddingin korkeuteen */
+            justify-content: space-between; 
+            box-sizing: border-box; 
         }
 
         .product-card:hover {
@@ -88,7 +154,7 @@
         }
 
         .product-content {
-            /* Uusi säiliö kortin kuvalle ja teksteille */
+            /* Sisältää kuvan, otsikon ja hinnan */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -114,7 +180,7 @@
             font-size: 1.5em;
             color: #4CAF50;
             font-weight: bold;
-            margin-bottom: 25px; /* Pienempi marginaali, koska justify-content hoitaa tilaa */
+            margin: 10px 0 20px 0; /* Tasaa hinnan korkeuden */
         }
 
         .buy-button {
@@ -130,7 +196,7 @@
             font-weight: 600;
             transition: background-color 0.2s;
             width: 80%;
-            margin-top: auto; /* Pushaa napin alas kortin pohjaan */
+            margin-top: auto; 
         }
 
         .buy-button:hover {
@@ -165,42 +231,56 @@
     <div id="particles-js"></div> 
 
     <h1 class="main-header">Reselling Empire</h1>
+    <h2 class="sub-header">Over 100 happy customers</h2>
 
-    <div class="product-grid">
+    <div class="content-wrapper">
 
-        <div class="product-card">
-            <div class="product-content">
-                <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Best 1:1 Airpod Supplier" class="product-image">
+        <div class="product-grid-wrapper">
+             <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-content">
+                        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Best 1:1 Airpod Supplier" class="product-image">
 
-                <h2 class="product-title">1:1 Airpod Supplier</h2>
-                <p class="product-price">10€</p>
+                        <h2 class="product-title">1:1 Airpod Supplier</h2>
+                        <p class="product-price">10€</p>
+                    </div>
+                    
+                    <a
+                        href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G"
+                        target="_blank"
+                        class="buy-button"
+                    >
+                        BUY NOW
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-content">
+                        <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Best 1:1 Sp5der Supplier" class="product-image">
+
+                        <h2 class="product-title">1:1 Sp5der Supplier</h2>
+                        <p class="product-price">8€</p>
+                    </div>
+                    
+                    <a
+                        href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN"
+                        target="_blank"
+                        class="buy-button"
+                    >
+                        BUY NOW
+                    </a>
+                </div>
             </div>
-            
-            <a
-                href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G"
-                target="_blank"
-                class="buy-button"
-            >
-                BUY NOW
-            </a>
+        </div>
+        
+        <div class="info-box-wrapper">
+            <div class="info-box">
+                <p class="info-text">
+                    All suppliers are very trusted by people all around the world
+                </p>
+            </div>
         </div>
 
-        <div class="product-card">
-            <div class="product-content">
-                <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Best 1:1 Sp5der Supplier" class="product-image">
-
-                <h2 class="product-title">1:1 Sp5der Supplier</h2>
-                <p class="product-price">8€</p>
-            </div>
-            
-            <a
-                href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN"
-                target="_blank"
-                class="buy-button"
-            >
-                BUY NOW
-            </a>
-        </div>
     </div>
 
     <footer class="site-footer">
@@ -213,14 +293,14 @@
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 120, /* Partikkelien määrä */
+                    "value": 120, 
                     "density": {
                         "enable": true,
                         "value_area": 800
                     }
                 },
                 "color": {
-                    "value": "#ffffff" /* Partikkelien väri: Valkoinen */
+                    "value": "#ffffff" 
                 },
                 "shape": {
                     "type": "circle",
