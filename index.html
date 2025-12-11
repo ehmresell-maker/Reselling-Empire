@@ -44,8 +44,29 @@
             text-align: center;
         }
 
+        /* UUSI TYYLI: Tuotekorttien asettelusäiliö */
+        .product-grid {
+            display: flex;
+            flex-direction: column; /* Oletus: Allekkain (puhelin/pieni näyttö) */
+            align-items: center;
+            gap: 30px; /* Tilaa korttien välillä pystysuunnassa */
+            width: 100%;
+            margin-bottom: 50px; /* Tilaa korttien ja footerin välille */
+        }
+
+        /* MEDIA QUERY: Kun näytön leveys on vähintään 768px (pöytäkone) */
+        @media (min-width: 768px) {
+            .product-grid {
+                flex-direction: row; /* Isolla näytöllä: Vierekkäin */
+                justify-content: center;
+                align-items: flex-start;
+                gap: 50px; /* Tilaa korttien välillä vaakasuunnassa */
+            }
+        }
+
         .product-card {
             width: 320px;
+            height: 500px; /* TÄRKEÄ MUUTOS: Kiinteä korkeus kaikille korteille */
             background-color: rgba(59, 66, 77, 0.9);
             border: 1px solid #444b56;
             border-radius: 12px;
@@ -53,12 +74,24 @@
             text-align: center;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s ease-in-out;
-            margin-bottom: 50px;
+
+            /* Sisällön pystyasettelun hallinta Flexboxilla kortin sisällä */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Sisältö jakautuu tasaisesti */
+            box-sizing: border-box; /* Sisältää paddingin korkeuteen */
         }
 
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+        }
+
+        .product-content {
+            /* Uusi säiliö kortin kuvalle ja teksteille */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .product-image {
@@ -69,8 +102,6 @@
             background-color: #555;
             min-height: 200px;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .product-title {
@@ -79,17 +110,11 @@
             margin: 10px 0 5px 0;
         }
 
-        .product-vendor {
-            font-size: 0.9em;
-            color: #bbbbbb;
-            margin-bottom: 5px;
-        }
-
         .product-price {
             font-size: 1.5em;
             color: #4CAF50;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Pienempi marginaali, koska justify-content hoitaa tilaa */
         }
 
         .buy-button {
@@ -105,13 +130,14 @@
             font-weight: 600;
             transition: background-color 0.2s;
             width: 80%;
+            margin-top: auto; /* Pushaa napin alas kortin pohjaan */
         }
 
         .buy-button:hover {
             background-color: #333333;
         }
 
-        /* UUSI TYYLI: Footer/alaviite */
+        /* Footer/alaviite */
         .site-footer {
             margin-top: auto;
             padding: 20px 0;
@@ -140,22 +166,43 @@
 
     <h1 class="main-header">Reselling Empire</h1>
 
-    <div class="product-card">
-        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Best 1:1 Airpod Supplier" class="product-image">
+    <div class="product-grid">
 
-        <h2 class="product-title">1:1 Airpod Supplier</h2>
-        <p class="product-vendor">Vendor: Reselling Empire</p>
-        <p class="product-price">10€</p>
+        <div class="product-card">
+            <div class="product-content">
+                <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Best 1:1 Airpod Supplier" class="product-image">
 
-        <a
-            href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G"
-            target="_blank"
-            class="buy-button"
-        >
-            BUY NOW
-        </a>
+                <h2 class="product-title">1:1 Airpod Supplier</h2>
+                <p class="product-price">10€</p>
+            </div>
+            
+            <a
+                href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G"
+                target="_blank"
+                class="buy-button"
+            >
+                BUY NOW
+            </a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-content">
+                <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Best 1:1 Sp5der Supplier" class="product-image">
+
+                <h2 class="product-title">1:1 Sp5der Supplier</h2>
+                <p class="product-price">8€</p>
+            </div>
+            
+            <a
+                href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN"
+                target="_blank"
+                class="buy-button"
+            >
+                BUY NOW
+            </a>
+        </div>
     </div>
-    
+
     <footer class="site-footer">
         <p>
             Have questions or feedback? <br> Join our <a href="https://discord.gg/QG5FH8wPAs" target="_blank">Reselling Empire Discord</a> and look for the feedback channel.
