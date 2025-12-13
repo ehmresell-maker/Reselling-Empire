@@ -30,11 +30,11 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Keskittää otsikot */
+            align-items: center; 
             padding: 50px 20px;
             min-height: 100vh;
             box-sizing: border-box;
-            width: 100%; /* Varmistaa, että body ottaa kaiken tilan */
+            width: 100%; 
         }
         
         .main-header {
@@ -54,20 +54,20 @@
             text-align: center;
         }
         
-        /* UUSI TYYLI: Pääsäiliö vasen/keski asetteluun */
+        /* Pääsäiliö (sama asettelu Home ja Shop näkymissä) */
         .content-wrapper {
             display: flex;
-            flex-direction: column; /* Oletus: Allekkain (puhelin/pieni näyttö) */
-            align-items: center; /* Keskittää elementit mobiilissa */
+            flex-direction: column; /* TÄMÄ TAKAA PYSYSUUNNAN JÄRJESTYKSEN MOBIILISSA */
+            align-items: center; 
             gap: 30px; 
             width: 100%;
-            max-width: 1200px; /* Estää sivun leviämisen liian leveäksi */
+            max-width: 1200px; 
+            margin-bottom: 50px;
         }
 
-        /* Tuotekorttien ryhmä (Airpods ja Sp5der) */
         .product-grid {
             display: flex;
-            flex-direction: column; /* Mobiilissa kortit allekkain */
+            flex-direction: column; 
             align-items: center;
             gap: 30px; 
             width: 100%;
@@ -76,40 +76,73 @@
 
         /* MEDIA QUERY: Kun näytön leveys on vähintään 768px (pöytäkone) */
         @media (min-width: 768px) {
-            /* Asettaa vasemman ja keskialueen vierekkäin */
-            .content-wrapper {
-                flex-direction: row; 
-                justify-content: space-between; /* Erottaa Info Boxin ja Kortit */
-                align-items: flex-start;
+            
+            /* TÄRKEÄ MUUTOS: Etusivun asettelu */
+            #home-section.content-wrapper {
+                flex-direction: row-reverse; /* Nappi oikealle, Info Box vasemmalle */
+                justify-content: center; 
+                align-items: center; 
                 width: 100%;
+                margin: 0 auto; 
+                max-width: 800px; 
+                gap: 50px; 
             }
 
-            /* Antaa info-boxille tilaa olla vasemmalla */
+            /* INFO BOXIN ALUE (VIHREÄ ALUE) */
             .info-box-wrapper {
-                margin-right: 50px; /* Tilaa info-boxin ja korttien väliin */
+                margin-left: 150px; 
             }
-
-            /* Keskittää kaksi korttia omassa säiliössään */
-            .product-grid {
-                flex-direction: row; 
-                justify-content: center; /* Keskittää Airpods ja Sp5der kortit */
-                margin: 0 auto; /* Keskittää korttiryhmän Content Wrapperin sisällä */
+            
+            /* SHOP NOW PAINIKE (PUNAINEN ALUE) */
+            .shop-button-area {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 300px; 
+                margin-right: 150px; 
+                
+                /* Pystysuuntainen hienosäätö, jotta nappi on täysin keskellä */
+                margin-top: 15px; 
+                margin-bottom: 15px;
             }
         }
+        
+        /* UUSI TYYLI: SHOP NOW painike etusivulla */
+        #home-section .shop-button-area .buy-button {
+            width: 250px;
+            padding: 20px 40px;
+            font-size: 1.5em;
+        }
+        
+        /* UUSI TYYLI: Takaisin-painike */
+        .back-button {
+            background: none;
+            border: none;
+            color: #61dafb;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .back-button:hover {
+            color: #ffffff;
+        }
 
-        /* UUSI TYYLI: INFO LAATIKKO */
+
+        /* INFO LAATIKKO TYYLIT (VIHREÄ ALUE) */
         .info-box {
-            width: 250px; /* Pienempi leveys */
-            height: 350px; /* Pienempi korkeus */
-            background-color: rgba(59, 66, 77, 0.9);
-            border: 1px solid #444b56;
-            border-radius: 12px;
+            width: 250px; 
+            height: 300px; 
+            background-color: transparent; 
+            border: 2px solid white; 
+            border-radius: 12px; 
             padding: 20px;
             text-align: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            box-shadow: none; 
             transition: transform 0.3s ease-in-out;
             
-            /* Keskittää tekstin pysty- ja vaakasuunnassa */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -117,22 +150,22 @@
         }
         
         .info-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+            transform: none; 
+            box-shadow: none; 
         }
 
         .info-text {
-            font-size: 1.5em;
+            font-size: 1.2em; 
             font-weight: 500;
             color: #ffffff;
             padding: 0 10px;
         }
 
 
-        /* TUOTEKORTTI TYYLIT */
+        /* TUOTEKORTTI TYYLIT (Kauppa-sivu) */
         .product-card {
             width: 320px;
-            height: 500px; /* Kiinteä korkeus kaikille korteille */
+            height: 500px; 
             background-color: rgba(59, 66, 77, 0.9);
             border: 1px solid #444b56;
             border-radius: 12px;
@@ -141,7 +174,6 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s ease-in-out;
 
-            /* Sisällön pystyasettelun hallinta */
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
@@ -154,7 +186,6 @@
         }
 
         .product-content {
-            /* Sisältää kuvan, otsikon ja hinnan */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -180,7 +211,7 @@
             font-size: 1.5em;
             color: #4CAF50;
             font-weight: bold;
-            margin: 10px 0 20px 0; /* Tasaa hinnan korkeuden */
+            margin: 10px 0 20px 0; 
         }
 
         .buy-button {
@@ -233,10 +264,30 @@
     <h1 class="main-header">Reselling Empire</h1>
     <h2 class="sub-header">Over 100 happy customers</h2>
 
-    <div class="content-wrapper">
 
-        <div class="product-grid-wrapper">
-             <div class="product-grid">
+    <div id="home-section" class="content-wrapper">
+
+        <div class="shop-button-area">
+            <button class="buy-button" onclick="showSection('shop')">SHOP NOW</button>
+        </div>
+        
+        <div class="info-box-wrapper">
+            <div class="info-box">
+                <p class="info-text">
+                    All suppliers are very trusted by people all around the world
+                </p>
+            </div>
+        </div>
+
+    </div> 
+    
+    
+    <div id="shop-section" class="content-wrapper" style="display: none; flex-direction: column;">
+
+        <div style="width: 100%; max-width: 690px; margin: 0 auto;">
+            <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+            
+            <div class="product-grid" style="margin-bottom: 50px;">
                 <div class="product-card">
                     <div class="product-content">
                         <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Best 1:1 Airpod Supplier" class="product-image">
@@ -272,16 +323,9 @@
                 </div>
             </div>
         </div>
-        
-        <div class="info-box-wrapper">
-            <div class="info-box">
-                <p class="info-text">
-                    All suppliers are very trusted by people all around the world
-                </p>
-            </div>
-        </div>
 
     </div>
+
 
     <footer class="site-footer">
         <p>
@@ -290,6 +334,22 @@
     </footer>
 
     <script>
+        // Funktio, joka vaihtaa näkymää
+        function showSection(section) {
+            const homeSection = document.getElementById('home-section');
+            const shopSection = document.getElementById('shop-section');
+            
+            if (section === 'shop') {
+                homeSection.style.display = 'none';
+                shopSection.style.display = 'flex'; 
+            } else {
+                homeSection.style.display = 'flex'; 
+                shopSection.style.display = 'none';
+            }
+            window.scrollTo(0, 0); 
+        }
+        
+        // Particles.js alustus
         particlesJS('particles-js', {
             "particles": {
                 "number": {
@@ -366,6 +426,11 @@
                 }
             },
             "retina_detect": true
+        });
+        
+        // Varmista, että aluksi näkyy HOME SECTION
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
         });
     </script>
 
