@@ -54,10 +54,10 @@
             text-align: center;
         }
         
-        /* Pääsäiliö (sama asettelu Home ja Shop näkymissä) */
+        /* Pääsäiliö (Flex-säiliö, joka sisältää Home/Shop-sisällön) */
         .content-wrapper {
             display: flex;
-            flex-direction: column; /* TÄMÄ TAKAA PYSYSUUNNAN JÄRJESTYKSEN MOBIILISSA */
+            flex-direction: column; /* Oletus: Allekkain (mobiili) */
             align-items: center; 
             gap: 30px; 
             width: 100%;
@@ -67,7 +67,7 @@
 
         .product-grid {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column; /* Mobiilissa kortit allekkain */
             align-items: center;
             gap: 30px; 
             width: 100%;
@@ -77,7 +77,7 @@
         /* MEDIA QUERY: Kun näytön leveys on vähintään 768px (pöytäkone) */
         @media (min-width: 768px) {
             
-            /* TÄRKEÄ MUUTOS: Etusivun asettelu */
+            /* HOME SECTION: SHOP NOW ja INFO BOX VIEREKKÄIN */
             #home-section.content-wrapper {
                 flex-direction: row-reverse; /* Nappi oikealle, Info Box vasemmalle */
                 justify-content: center; 
@@ -86,6 +86,12 @@
                 margin: 0 auto; 
                 max-width: 800px; 
                 gap: 50px; 
+            }
+
+            /* SHOP SECTION: TUOTTEET VIEREKKÄIN */
+            #shop-section .product-grid {
+                flex-direction: row; 
+                justify-content: center;
             }
 
             /* INFO BOXIN ALUE (VIHREÄ ALUE) */
@@ -118,23 +124,24 @@
         .back-button {
             background: none;
             border: none;
-            color: #61dafb;
+            color: #ffffff; /* MUUTETTU VALKOISEKSI */
             font-size: 1.1em;
             cursor: pointer;
             padding: 10px 0;
             margin-bottom: 20px;
-            text-decoration: underline;
+            text-decoration: none; /* Poistettu perus alleviivaus */
             transition: color 0.2s;
         }
         .back-button:hover {
-            color: #ffffff;
+            color: #aaaaaa; /* Vaihtaa väriä hoverissa */
+            text-decoration: underline; /* Lisää alleviivauksen hoverissa */
         }
 
 
-        /* INFO LAATIKKO TYYLIT (VIHREÄ ALUE) */
+        /* INFO LAATIKKO TYYLIT */
         .info-box {
             width: 250px; 
-            height: 300px; 
+            height: 300px; /* Kiinteä korkeus pystysuuntaista keskitystä varten */
             background-color: transparent; 
             border: 2px solid white; 
             border-radius: 12px; 
@@ -162,7 +169,7 @@
         }
 
 
-        /* TUOTEKORTTI TYYLIT (Kauppa-sivu) */
+        /* TUOTEKORTTI TYYLIT */
         .product-card {
             width: 320px;
             height: 500px; 
@@ -193,11 +200,11 @@
 
         .product-image {
             width: 90%;
-            height: auto;
+            height: 200px; /* Varmistaa saman korkeuden kaikille kuville */
+            object-fit: cover; /* Estää kuvan vääristymisen */
             border-radius: 8px;
             margin-bottom: 15px;
             background-color: #555;
-            min-height: 200px;
             display: block;
         }
 
@@ -211,7 +218,7 @@
             font-size: 1.5em;
             color: #4CAF50;
             font-weight: bold;
-            margin: 10px 0 20px 0; 
+            margin: 10px 0 20px 0; /* Tasaa hinnan korkeuden */
         }
 
         .buy-button {
@@ -285,6 +292,7 @@
     <div id="shop-section" class="content-wrapper" style="display: none; flex-direction: column;">
 
         <div style="width: 100%; max-width: 690px; margin: 0 auto;">
+            
             <button class="back-button" onclick="showSection('home')">← Back to Home</button>
             
             <div class="product-grid" style="margin-bottom: 50px;">
@@ -341,6 +349,7 @@
             
             if (section === 'shop') {
                 homeSection.style.display = 'none';
+                // Asetetaan takaisin flex, jotta Flexbox-asetukset toimivat (mobiilissa column, pöytäkoneella row)
                 shopSection.style.display = 'flex'; 
             } else {
                 homeSection.style.display = 'flex'; 
@@ -349,7 +358,7 @@
             window.scrollTo(0, 0); 
         }
         
-        // Particles.js alustus
+        // Particles.js alustus (ennallaan)
         particlesJS('particles-js', {
             "particles": {
                 "number": {
