@@ -48,7 +48,7 @@
         .sub-header {
             font-size: 1.5em;
             font-weight: 400;
-            color: #aaaaaa;
+            color: #ffffff;
             margin-top: 0;
             margin-bottom: 30px; 
             text-align: center;
@@ -73,18 +73,20 @@
             padding: 20px;
             text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             box-sizing: border-box; 
-            background-color: rgba(25, 28, 32, 0.95); /* Tehty myös tästä tummempi */
+            background-color: rgba(25, 28, 32, 0.95);
         }
 
-        /* TUOTEKORTTI - MUUTETTU TUMMEMMAKSI */
+        /* TUOTEKORTTI */
         .product-card {
+            position: relative; 
             width: 320px;
             height: 520px; 
-            background-color: rgba(25, 28, 32, 0.95); /* Tummennettu tausta */
-            border: 1px solid #333942; /* Päivitetty reunus sopimaan tummaan */
+            background-color: rgba(25, 28, 32, 0.95);
+            border: 1px solid #333942;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -100,7 +102,22 @@
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
-            border-color: #555; /* Hienovarainen korostus hovauksessa */
+            border-color: #555;
+        }
+
+        /* BADGE TYULI */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #444; 
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
         }
 
         .product-image {
@@ -167,7 +184,6 @@
             text-decoration: underline; 
         }
 
-        /* PÖYTÄKONE-ASETUKSET */
         @media (min-width: 768px) {
             .product-grid {
                 display: flex;
@@ -177,9 +193,10 @@
                 gap: 25px;
             }
             #home-section.content-wrapper {
-                flex-direction: row-reverse;
-                max-width: 800px;
-                gap: 50px;
+                flex-direction: row; 
+                justify-content: center;
+                max-width: 1200px;
+                gap: 40px;
             }
         }
         
@@ -200,16 +217,20 @@
     <div id="particles-js"></div> 
 
     <h1 class="main-header">Reselling Empire</h1>
-    <h2 class="sub-header">Over 100 happy customers</h2>
+    <h2 class="sub-header">Best Vendors In The Game</h2>
 
     <div id="home-section" class="content-wrapper">
+        <div class="info-box">
+            <p style="font-size: 1.2em; color: white; padding: 0 10px;">All suppliers are very trusted by people all around the world</p>
+        </div>
+
         <div class="shop-button-area">
             <button class="buy-button" style="width: 250px; font-size: 1.5em; padding: 20px;" onclick="showSection('shop')">SHOP NOW</button>
         </div>
-        <div class="info-box-wrapper">
-            <div class="info-box">
-                <p style="font-size: 1.2em; color: white; padding: 0 10px;">All suppliers are very trusted by people all around the world</p>
-            </div>
+
+        <div class="info-box">
+            <p style="font-size: 1.2em; color: white; margin-bottom: 10px;">Rated 4.98/5</p>
+            <p style="font-size: 1.2em; color: white;">⭐⭐⭐⭐⭐</p>
         </div>
     </div> 
     
@@ -220,6 +241,7 @@
             <div class="product-grid"> 
                 
                 <div class="product-card">
+                    <div class="badge">Best Deal</div>
                     <div class="product-content">
                         <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Airpods" class="product-image">
                         <h2 class="product-title">1:1 Airpod Supplier</h2>
@@ -238,6 +260,7 @@
                 </div>
 
                 <div class="product-card">
+                    <div class="badge">NEW!</div>
                     <div class="product-content">
                         <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" alt="Cologne" class="product-image">
                         <h2 class="product-title">1:1 Cologne Supplier</h2>
