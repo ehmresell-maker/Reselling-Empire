@@ -9,7 +9,7 @@
     
     <style>
         /* ========================================= */
-        /* TAUSTA (PARTICLES) */
+        /* HIUKKASTAUSTA (PARTICLES) */
         /* ========================================= */
         #particles-js {
             position: fixed;
@@ -64,62 +64,6 @@
             margin-bottom: 20px;
         }
 
-        /* SHOP SECTION: Säiliöt */
-        .shop-container {
-            width: 100%; 
-            max-width: 1000px; 
-            margin: 0 auto;
-        }
-        
-        .product-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px; 
-            width: 100%;
-        }
-
-        /* PÖYTÄKONE-ASETUKSET */
-        @media (min-width: 768px) {
-            #home-section.content-wrapper {
-                flex-direction: row-reverse; 
-                justify-content: center; 
-                align-items: center; 
-                width: 100%;
-                max-width: 800px; 
-                gap: 50px; 
-            }
-
-            .info-box-wrapper { margin-left: 150px; }
-            .shop-button-area {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 300px; 
-                margin-right: 150px;
-            }
-            
-            .product-grid {
-                flex-direction: row; 
-                justify-content: center; 
-                gap: 40px;
-            }
-        }
-        
-        /* BACK BUTTON */
-        .back-button {
-            background: none;
-            border: none;
-            color: #ffffff; 
-            font-size: 1.1em;
-            cursor: pointer;
-            padding: 5px 0;
-            margin-bottom: 10px;
-            text-decoration: none; 
-            transition: color 0.2s;
-        }
-        .back-button:hover { color: #aaaaaa; text-decoration: underline; }
-
         /* INFO BOX */
         .info-box {
             width: 250px; 
@@ -137,7 +81,7 @@
         /* TUOTEKORTTI */
         .product-card {
             width: 320px;
-            height: 500px; 
+            height: 520px; 
             background-color: rgba(59, 66, 77, 0.9);
             border: 1px solid #444b56;
             border-radius: 12px;
@@ -149,6 +93,7 @@
             flex-direction: column;
             justify-content: space-between; 
             box-sizing: border-box; 
+            overflow: hidden;
         }
 
         .product-card:hover {
@@ -157,24 +102,29 @@
         }
 
         .product-image {
-            width: 90%;
+            width: 100%;
             height: 200px; 
             object-fit: cover; 
             border-radius: 8px;
             margin-bottom: 15px;
-            background-color: #555;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05) rotate(2deg);
         }
 
         .product-title {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: #ffffff;
             margin: 10px 0 5px 0;
+            min-height: 60px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* HINTA - Vaihdettu valkoiseksi */
         .product-price { 
             font-size: 1.5em; 
             color: #ffffff; 
@@ -182,7 +132,6 @@
             margin: 10px 0 20px 0; 
         }
 
-        /* PAINIKE-TYYLI */
         .buy-button {
             display: inline-block;
             background-color: transparent; 
@@ -203,9 +152,8 @@
             color: #000000;
         }
 
-        /* FOOTER */
         .site-footer {
-            margin-top: 10px; 
+            margin-top: 30px; 
             padding: 10px 0;
             font-size: 0.9em;
             color: #aaaaaa;
@@ -215,10 +163,32 @@
         .site-footer a { 
             color: #ffffff; 
             text-decoration: underline; 
-            transition: color 0.2s; 
         }
-        .site-footer a:hover { 
-            color: #aaaaaa; 
+
+        /* PÖYTÄKONE-ASETUKSET */
+        @media (min-width: 768px) {
+            .product-grid {
+                display: flex;
+                flex-direction: row; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 25px;
+            }
+            #home-section.content-wrapper {
+                flex-direction: row-reverse;
+                max-width: 800px;
+                gap: 50px;
+            }
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: #ffffff; 
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 5px 0;
+            margin-bottom: 20px;
         }
 
     </style>
@@ -245,7 +215,7 @@
         <div class="shop-container">
             <button class="back-button" onclick="showSection('home')">← Back to Home</button>
             
-            <div class="product-grid" style="margin-bottom: 20px;"> 
+            <div class="product-grid"> 
                 
                 <div class="product-card">
                     <div class="product-content">
@@ -253,7 +223,7 @@
                         <h2 class="product-title">1:1 Airpod Supplier</h2>
                         <p class="product-price">10€</p>
                     </div>
-                    <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="width: 80%; margin: 0 auto;">BUY NOW</a>
+                    <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
                 </div>
 
                 <div class="product-card">
@@ -262,7 +232,16 @@
                         <h2 class="product-title">1:1 Sp5der Supplier</h2>
                         <p class="product-price">8€</p>
                     </div>
-                    <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="width: 80%; margin: 0 auto;">BUY NOW</a>
+                    <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-content">
+                        <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" alt="Cologne" class="product-image">
+                        <h2 class="product-title">1:1 Cologne Supplier</h2>
+                        <p class="product-price">5€</p>
+                    </div>
+                    <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
                 </div>
 
             </div>
@@ -280,7 +259,28 @@
             window.scrollTo(0, 0); 
         }
         
-        particlesJS('particles-js', {"particles":{"number":{"value":120,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5},"size":{"value":3,"random":true},"line_linked":{"enable":false},"move":{"enable":true,"speed":0.5,"direction":"none","out_mode":"out"}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"bubble"},"onclick":{"enable":true,"mode":"push"}},"modes":{"bubble":{"distance":100,"size":4}}},"retina_detect":true});
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 0.5, "direction": "none", "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "bubble" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "bubble": { "distance": 100, "size": 4 }
+                }
+            },
+            "retina_detect": true
+        });
         
         document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
     </script>
