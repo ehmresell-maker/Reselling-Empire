@@ -76,18 +76,19 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box; 
+            background-color: rgba(25, 28, 32, 0.95); /* Tehty myös tästä tummempi */
         }
 
-        /* TUOTEKORTTI */
+        /* TUOTEKORTTI - MUUTETTU TUMMEMMAKSI */
         .product-card {
             width: 320px;
             height: 520px; 
-            background-color: rgba(59, 66, 77, 0.9);
-            border: 1px solid #444b56;
+            background-color: rgba(25, 28, 32, 0.95); /* Tummennettu tausta */
+            border: 1px solid #333942; /* Päivitetty reunus sopimaan tummaan */
             border-radius: 12px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
             transition: transform 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
@@ -98,7 +99,8 @@
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
+            border-color: #555; /* Hienovarainen korostus hovauksessa */
         }
 
         .product-image {
