@@ -9,7 +9,7 @@
     
     <style>
         /* ========================================= */
-        /* TAASTA TYYLIT */
+        /* TAUSTA (PARTICLES) */
         /* ========================================= */
         #particles-js {
             position: fixed;
@@ -22,7 +22,7 @@
         }
 
         /* ========================================= */
-        /* MUUT TYYLIT */
+        /* YLEISET TYYLIT */
         /* ========================================= */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -31,7 +31,7 @@
             display: flex;
             flex-direction: column;
             align-items: center; 
-            padding: 50px 20px;
+            padding: 30px 20px; 
             min-height: 100vh;
             box-sizing: border-box;
             width: 100%; 
@@ -40,7 +40,7 @@
         .main-header {
             font-size: 3em;
             font-weight: 700;
-            margin-bottom: 10px; 
+            margin-bottom: 5px; 
             color: #FFFFFF;
             text-align: center;
         }
@@ -50,126 +50,91 @@
             font-weight: 400;
             color: #aaaaaa;
             margin-top: 0;
-            margin-bottom: 50px; 
+            margin-bottom: 30px; 
             text-align: center;
         }
         
-        /* Pääsäiliö (Flex-säiliö, joka sisältää Home/Shop-sisällön) */
         .content-wrapper {
             display: flex;
-            flex-direction: column; /* Oletus: Allekkain (mobiili) */
+            flex-direction: column; 
             align-items: center; 
-            gap: 30px; 
+            gap: 20px; 
             width: 100%;
             max-width: 1200px; 
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
 
+        /* SHOP SECTION: Säiliöt */
+        .shop-container {
+            width: 100%; 
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
+        
         .product-grid {
             display: flex;
-            flex-direction: column; /* Mobiilissa kortit allekkain */
+            flex-direction: column;
             align-items: center;
             gap: 30px; 
             width: 100%;
         }
 
-
-        /* MEDIA QUERY: Kun näytön leveys on vähintään 768px (pöytäkone) */
+        /* PÖYTÄKONE-ASETUKSET */
         @media (min-width: 768px) {
-            
-            /* HOME SECTION: SHOP NOW ja INFO BOX VIEREKKÄIN */
             #home-section.content-wrapper {
-                flex-direction: row-reverse; /* Nappi oikealle, Info Box vasemmalle */
+                flex-direction: row-reverse; 
                 justify-content: center; 
                 align-items: center; 
                 width: 100%;
-                margin: 0 auto; 
                 max-width: 800px; 
                 gap: 50px; 
             }
 
-            /* SHOP SECTION: TUOTTEET VIEREKKÄIN */
-            #shop-section .product-grid {
-                flex-direction: row; 
-                justify-content: center;
-            }
-
-            /* INFO BOXIN ALUE (VIHREÄ ALUE) */
-            .info-box-wrapper {
-                margin-left: 150px; 
-            }
-            
-            /* SHOP NOW PAINIKE (PUNAINEN ALUE) */
+            .info-box-wrapper { margin-left: 150px; }
             .shop-button-area {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 300px; 
-                margin-right: 150px; 
-                
-                /* Pystysuuntainen hienosäätö, jotta nappi on täysin keskellä */
-                margin-top: 15px; 
-                margin-bottom: 15px;
+                margin-right: 150px;
+            }
+            
+            .product-grid {
+                flex-direction: row; 
+                justify-content: center; 
+                gap: 40px;
             }
         }
         
-        /* UUSI TYYLI: SHOP NOW painike etusivulla */
-        #home-section .shop-button-area .buy-button {
-            width: 250px;
-            padding: 20px 40px;
-            font-size: 1.5em;
-        }
-        
-        /* UUSI TYYLI: Takaisin-painike */
+        /* BACK BUTTON */
         .back-button {
             background: none;
             border: none;
-            color: #ffffff; /* MUUTETTU VALKOISEKSI */
+            color: #ffffff; 
             font-size: 1.1em;
             cursor: pointer;
-            padding: 10px 0;
-            margin-bottom: 20px;
-            text-decoration: none; /* Poistettu perus alleviivaus */
+            padding: 5px 0;
+            margin-bottom: 10px;
+            text-decoration: none; 
             transition: color 0.2s;
         }
-        .back-button:hover {
-            color: #aaaaaa; /* Vaihtaa väriä hoverissa */
-            text-decoration: underline; /* Lisää alleviivauksen hoverissa */
-        }
+        .back-button:hover { color: #aaaaaa; text-decoration: underline; }
 
-
-        /* INFO LAATIKKO TYYLIT */
+        /* INFO BOX */
         .info-box {
             width: 250px; 
-            height: 300px; /* Kiinteä korkeus pystysuuntaista keskitystä varten */
-            background-color: transparent; 
-            border: 2px solid white; 
+            height: 300px; 
+            border: 3px solid white; 
             border-radius: 12px; 
             padding: 20px;
             text-align: center;
-            box-shadow: none; 
-            transition: transform 0.3s ease-in-out;
-            
             display: flex;
             align-items: center;
             justify-content: center;
             box-sizing: border-box; 
         }
-        
-        .info-box:hover {
-            transform: none; 
-            box-shadow: none; 
-        }
 
-        .info-text {
-            font-size: 1.2em; 
-            font-weight: 500;
-            color: #ffffff;
-            padding: 0 10px;
-        }
-
-
-        /* TUOTEKORTTI TYYLIT */
+        /* TUOTEKORTTI */
         .product-card {
             width: 320px;
             height: 500px; 
@@ -180,7 +145,6 @@
             text-align: center;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s ease-in-out;
-
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
@@ -192,20 +156,16 @@
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
         }
 
-        .product-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .product-image {
             width: 90%;
-            height: 200px; /* Varmistaa saman korkeuden kaikille kuville */
-            object-fit: cover; /* Estää kuvan vääristymisen */
+            height: 200px; 
+            object-fit: cover; 
             border-radius: 8px;
             margin-bottom: 15px;
             background-color: #555;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .product-title {
@@ -214,52 +174,51 @@
             margin: 10px 0 5px 0;
         }
 
-        .product-price {
-            font-size: 1.5em;
-            color: #4CAF50;
-            font-weight: bold;
-            margin: 10px 0 20px 0; /* Tasaa hinnan korkeuden */
+        .product-price { 
+            font-size: 1.5em; 
+            color: #4CAF50; 
+            font-weight: bold; 
+            margin: 10px 0 20px 0; 
         }
 
+        /* PAINIKE-TYYLI */
         .buy-button {
             display: inline-block;
-            background-color: #000000;
+            background-color: transparent; 
             color: white;
             padding: 12px 30px;
             text-decoration: none;
-            border: none;
+            border: 3px solid white; 
             border-radius: 6px;
             cursor: pointer;
-            font-size: 1.1em;
             font-weight: 600;
-            transition: background-color 0.2s;
-            width: 80%;
-            margin-top: auto; 
+            transition: all 0.2s;
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .buy-button:hover {
-            background-color: #333333;
+            background-color: #ffffff;
+            color: #000000;
         }
 
-        /* Footer/alaviite */
+        /* FOOTER */
         .site-footer {
-            margin-top: auto;
-            padding: 20px 0;
+            margin-top: 10px; 
+            padding: 10px 0;
             font-size: 0.9em;
             color: #aaaaaa;
             text-align: center;
             width: 100%;
         }
-
-        .site-footer a {
-            color: #61dafb;
-            text-decoration: none;
-            transition: color 0.2s;
+        /* Discord-linkin värin muutos valkoiseksi */
+        .site-footer a { 
+            color: #ffffff; 
+            text-decoration: underline; 
+            transition: color 0.2s; 
         }
-
-        .site-footer a:hover {
-            color: #ffffff;
-            text-decoration: underline;
+        .site-footer a:hover { 
+            color: #aaaaaa; 
         }
 
     </style>
@@ -271,176 +230,59 @@
     <h1 class="main-header">Reselling Empire</h1>
     <h2 class="sub-header">Over 100 happy customers</h2>
 
-
     <div id="home-section" class="content-wrapper">
-
         <div class="shop-button-area">
-            <button class="buy-button" onclick="showSection('shop')">SHOP NOW</button>
+            <button class="buy-button" style="width: 250px; font-size: 1.5em; padding: 20px;" onclick="showSection('shop')">SHOP NOW</button>
         </div>
-        
         <div class="info-box-wrapper">
             <div class="info-box">
-                <p class="info-text">
-                    All suppliers are very trusted by people all around the world
-                </p>
+                <p style="font-size: 1.2em; color: white; padding: 0 10px;">All suppliers are very trusted by people all around the world</p>
             </div>
         </div>
-
     </div> 
     
-    
     <div id="shop-section" class="content-wrapper" style="display: none; flex-direction: column;">
-
-        <div style="width: 100%; max-width: 690px; margin: 0 auto;">
-            
+        <div class="shop-container">
             <button class="back-button" onclick="showSection('home')">← Back to Home</button>
             
-            <div class="product-grid" style="margin-bottom: 50px;">
+            <div class="product-grid" style="margin-bottom: 20px;"> 
+                
                 <div class="product-card">
                     <div class="product-content">
-                        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Best 1:1 Airpod Supplier" class="product-image">
-
+                        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Airpods" class="product-image">
                         <h2 class="product-title">1:1 Airpod Supplier</h2>
                         <p class="product-price">10€</p>
                     </div>
-                    
-                    <a
-                        href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G"
-                        target="_blank"
-                        class="buy-button"
-                    >
-                        BUY NOW
-                    </a>
+                    <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="width: 80%; margin: 0 auto;">BUY NOW</a>
                 </div>
 
                 <div class="product-card">
                     <div class="product-content">
-                        <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Best 1:1 Sp5der Supplier" class="product-image">
-
+                        <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Sp5der" class="product-image">
                         <h2 class="product-title">1:1 Sp5der Supplier</h2>
                         <p class="product-price">8€</p>
                     </div>
-                    
-                    <a
-                        href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN"
-                        target="_blank"
-                        class="buy-button"
-                    >
-                        BUY NOW
-                    </a>
+                    <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="width: 80%; margin: 0 auto;">BUY NOW</a>
                 </div>
+
             </div>
         </div>
-
     </div>
 
-
     <footer class="site-footer">
-        <p>
-            Have questions or feedback? <br> Join our <a href="https://discord.gg/QG5FH8wPAs" target="_blank">Reselling Empire Discord</a> and look for the feedback channel.
-        </p>
+        <p>Have questions or feedback? <br> Join our <a href="https://discord.gg/QG5FH8wPAs" target="_blank">Reselling Empire Discord</a>.</p>
     </footer>
 
     <script>
-        // Funktio, joka vaihtaa näkymää
         function showSection(section) {
-            const homeSection = document.getElementById('home-section');
-            const shopSection = document.getElementById('shop-section');
-            
-            if (section === 'shop') {
-                homeSection.style.display = 'none';
-                // Asetetaan takaisin flex, jotta Flexbox-asetukset toimivat (mobiilissa column, pöytäkoneella row)
-                shopSection.style.display = 'flex'; 
-            } else {
-                homeSection.style.display = 'flex'; 
-                shopSection.style.display = 'none';
-            }
+            document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
+            document.getElementById('shop-section').style.display = section === 'shop' ? 'flex' : 'none';
             window.scrollTo(0, 0); 
         }
         
-        // Particles.js alustus (ennallaan)
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 120, 
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff" 
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false
-                    }
-                },
-                "line_linked": {
-                    "enable": false
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 0.5,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out"
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "bubble"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "bubble": {
-                        "distance": 100,
-                        "size": 4,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    }
-                }
-            },
-            "retina_detect": true
-        });
+        particlesJS('particles-js', {"particles":{"number":{"value":120,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5},"size":{"value":3,"random":true},"line_linked":{"enable":false},"move":{"enable":true,"speed":0.5,"direction":"none","out_mode":"out"}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"bubble"},"onclick":{"enable":true,"mode":"push"}},"modes":{"bubble":{"distance":100,"size":4}}},"retina_detect":true});
         
-        // Varmista, että aluksi näkyy HOME SECTION
-        document.addEventListener('DOMContentLoaded', () => {
-            showSection('home');
-        });
+        document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
     </script>
 
 </body>
