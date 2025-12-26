@@ -64,11 +64,11 @@
             margin-bottom: 20px;
         }
 
-        /* INFO BOX */
+        /* INFO BOX - LISÄTTY VALKOINEN HEHKU */
         .info-box {
             width: 250px; 
             height: 300px; 
-            border: 3px solid white; 
+            border: 2px solid rgba(255, 255, 255, 0.2); 
             border-radius: 12px; 
             padding: 20px;
             text-align: center;
@@ -78,19 +78,27 @@
             justify-content: center;
             box-sizing: border-box; 
             background-color: rgba(25, 28, 32, 0.95);
+            /* Valkoinen hehku */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
         }
 
-        /* TUOTEKORTTI - LISÄTTY VALKOINEN HEHKU */
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* TUOTEKORTTI - VALKOINEN HEHKU */
         .product-card {
             position: relative; 
             width: 320px;
             height: 520px; 
             background-color: rgba(25, 28, 32, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Muutettu kevyemmäksi */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
-            /* Valkoinen hehku oletuksena */
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); 
             transition: all 0.3s ease-in-out;
             display: flex;
@@ -102,12 +110,11 @@
 
         .product-card:hover {
             transform: translateY(-10px);
-            /* Voimakkaampi valkoinen hehku hoverissa */
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* BADGE TYULI */
+        /* BADGE TYYLI */
         .badge {
             position: absolute;
             top: 10px;
@@ -130,7 +137,6 @@
             margin-bottom: 15px;
             display: block;
             transition: transform 0.3s ease-in-out;
-            /* Lisätty hehku myös itse kuvaan */
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
         }
 
@@ -162,7 +168,7 @@
             color: white;
             padding: 12px 30px;
             text-decoration: none;
-            border: 3px solid white; 
+            border: 2px solid white; 
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
@@ -174,7 +180,6 @@
         .buy-button:hover {
             background-color: #ffffff;
             color: #000000;
-            /* Nappi hehkuu myös hieman valkoisena */
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
