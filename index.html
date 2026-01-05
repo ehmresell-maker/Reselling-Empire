@@ -5,154 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reselling Empire</title>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAcVKUFDIE9PbCxKgdeX8DXpW4BY4l6GP9E0frwMPSUKji4XLzf4yL517-1s7jrUrlaAZQFybs0X__R0&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAcVKUFDiE9PbQcxKgdeX8DXpW4BY4l6GP9E0frwMPSUKji4XLzf4yL517-1s7jrUrlaAZQFybs0X__R0&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background-color: #121212;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ffffff;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            padding: 30px 20px; 
-            min-height: 100vh;
-            box-sizing: border-box;
-            width: 100%; 
-        }
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background-color: #121212; }
+        body { font-family: 'Segoe UI', sans-serif; color: #ffffff; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; min-height: 100vh; box-sizing: border-box; width: 100%; }
         
-        .main-header {
-            font-size: 3em;
-            font-weight: 700;
-            margin-bottom: 5px; 
-            text-align: center;
-        }
-
-        .sub-header {
-            font-size: 1.5em;
-            margin-bottom: 30px; 
-            text-align: center;
-        }
+        .main-header { font-size: clamp(2.5em, 8vw, 4em); font-weight: 700; margin-bottom: 10px; text-align: center; }
+        .sub-header { font-size: clamp(1.2em, 4vw, 1.8em); margin-bottom: 60px; text-align: center; opacity: 0.9; }
         
-        .content-wrapper {
-            display: flex;
+        /* ETUSIVUN PAÄ-ASETTELU */
+        .content-wrapper { 
+            display: flex; 
             flex-direction: column; 
             align-items: center; 
-            gap: 20px; 
-            width: 100%;
+            gap: 40px; 
+            width: 100%; 
             max-width: 1200px; 
         }
 
-        .info-box {
-            width: 250px; 
-            height: 300px; 
-            border: 2px solid rgba(255, 255, 255, 0.2); 
-            border-radius: 12px; 
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box; 
-            background-color: rgba(25, 28, 32, 0.95);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .shop-button-area {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .product-card {
-            width: 320px;
-            height: 520px; 
-            background-color: rgba(25, 28, 32, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; 
-            box-sizing: border-box; 
-        }
-
-        .product-image {
+        .info-box { 
             width: 100%;
-            height: 200px; 
-            object-fit: cover; 
-            border-radius: 8px;
+            max-width: 320px; 
+            min-height: 220px; 
+            border: 2px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 15px; 
+            padding: 30px; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: rgba(25, 28, 32, 0.95); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
         }
 
-        .product-title {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 10px 0;
+        .shop-button-area { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+            width: 100%; 
+            align-items: center; 
         }
 
-        .product-price {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin: 5px 0;
+        /* TUOTEKORTIT */
+        .product-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; width: 100%; padding-bottom: 50px; }
+        .product-card { 
+            width: 100%;
+            max-width: 340px; 
+            background-color: rgba(25, 28, 32, 0.95); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 16px; 
+            padding: 25px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
         }
 
-        .vinted-guide {
-            font-size: 0.9em;
-            opacity: 0.8;
-            margin-bottom: 15px;
-        }
+        .product-image { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+        .product-title { font-size: 1.8em; font-weight: bold; margin: 10px 0; }
+        .product-price { font-size: 1.5em; font-weight: bold; margin: 10px 0; }
+        .vinted-guide { font-size: 0.9em; opacity: 0.7; margin-bottom: 25px; }
 
-        .buy-button {
-            display: inline-block;
+        /* NAPIT */
+        .buy-button { 
+            display: block; 
             background-color: transparent; 
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
+            color: white; 
+            padding: 18px; 
+            text-decoration: none; 
             border: 2px solid white; 
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            text-align: center;
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+            width: 100%;
+            max-width: 280px;
+            box-sizing: border-box;
+            text-transform: uppercase;
         }
+        .buy-button:hover { background-color: white; color: black; transform: translateY(-5px); }
+        .back-button { background: none; border: none; color: #ffffff; font-size: 1.1em; cursor: pointer; text-decoration: underline; margin-bottom: 40px; }
 
-        .back-button {
-            background: none;
-            border: none;
-            color: #ffffff; 
-            font-size: 1.1em;
-            cursor: pointer;
-            text-decoration: underline;
-            margin-bottom: 20px;
-        }
+        #paypal-container-XKAUV6B33S4V2 { display: none; }
 
-        @media (min-width: 768px) {
-            .product-grid {
-                display: flex;
+        /* TIETOKONENÄKYMÄN KORJAUS (ESTÄÄ PÄÄLLEKKÄISYYDEN) */
+        @media (min-width: 1024px) {
+            #home-section.content-wrapper { 
+                flex-direction: row; /* Laittaa elementit rinnakkain */
+                justify-content: center; 
+                align-items: stretch;
+                gap: 50px;
+            }
+            .shop-button-area { 
+                justify-content: center; 
+                width: auto;
+            }
+            .product-grid { 
                 flex-direction: row; 
                 flex-wrap: wrap; 
                 justify-content: center; 
-                gap: 25px;
-            }
-            #home-section.content-wrapper {
-                flex-direction: row; 
-                justify-content: center;
-                gap: 40px;
+                gap: 40px; 
             }
         }
     </style>
@@ -160,22 +116,21 @@
 <body>
 
     <div id="particles-js"></div> 
-
     <h1 class="main-header">Reselling Empire</h1>
     <h2 class="sub-header">Best Vendors In The Game</h2>
 
     <div id="home-section" class="content-wrapper">
         <div class="info-box">
-            <p style="font-size: 1.2em;">All suppliers are very trusted by people all around the world</p>
+            <p style="font-size: 1.3em; line-height: 1.4;">All suppliers are very trusted by people all around the world</p>
         </div>
 
         <div class="shop-button-area">
-            <button class="buy-button" style="width: 250px; font-size: 1.3em;" onclick="showSection('suppliers')">SHOP SUPPLIERS</button>
-            <button class="buy-button" style="width: 250px; font-size: 1.3em;" onclick="showSection('items')">SHOP ITEMS</button>
+            <button class="buy-button" onclick="showSection('suppliers')">SHOP SUPPLIERS</button>
+            <button class="buy-button" onclick="showSection('items')">SHOP ITEMS</button>
         </div>
 
         <div class="info-box">
-            <p style="font-size: 1.2em;">Rated 4.98/5<br>⭐⭐⭐⭐⭐</p>
+            <p style="font-size: 1.3em;">Rated 4.98/5<br><span style="color: #ffcc00; font-size: 1.2em;">⭐⭐⭐⭐⭐</span></p>
         </div>
     </div> 
 
@@ -183,33 +138,25 @@
         <button class="back-button" onclick="showSection('home')">← Back to Home</button>
         <div class="product-grid"> 
             <div class="product-card">
-                <div>
-                    <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
-                    <h2 class="product-title">1:1 Airpod Supplier</h2>
-                    <p class="product-price">10€</p>
-                    <p class="vinted-guide">This includes a Vinted guide</p>
-                </div>
-                <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button">BUY NOW</a>
+                <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
+                <h2 class="product-title">1:1 Airpod Supplier</h2>
+                <p class="product-price">10€</p>
+                <p class="vinted-guide">This includes a Vinted guide</p>
+                <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="margin: 0 auto;">BUY NOW</a>
             </div>
-
             <div class="product-card">
-                <div>
-                    <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" class="product-image">
-                    <h2 class="product-title">1:1 Sp5der Supplier</h2>
-                    <p class="product-price">8€</p>
-                    <p class="vinted-guide">This includes a Vinted guide</p>
-                </div>
-                <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button">BUY NOW</a>
+                <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" class="product-image">
+                <h2 class="product-title">1:1 Sp5der Supplier</h2>
+                <p class="product-price">8€</p>
+                <p class="vinted-guide">This includes a Vinted guide</p>
+                <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="margin: 0 auto;">BUY NOW</a>
             </div>
-
             <div class="product-card">
-                <div>
-                    <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" class="product-image">
-                    <h2 class="product-title">1:1 Cologne Supplier</h2>
-                    <p class="product-price">5€</p>
-                    <p class="vinted-guide">This includes a Vinted guide</p>
-                </div>
-                <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button">BUY NOW</a>
+                <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" class="product-image">
+                <h2 class="product-title">1:1 Cologne Supplier</h2>
+                <p class="product-price">5€</p>
+                <p class="vinted-guide">This includes a Vinted guide</p>
+                <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button" style="margin: 0 auto;">BUY NOW</a>
             </div>
         </div>
     </div>
@@ -218,44 +165,44 @@
         <button class="back-button" onclick="showSection('home')">← Back to Home</button>
         <div class="product-grid"> 
             <div class="product-card">
-                <div>
-                    <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
-                    <h2 class="product-title">Airpods</h2>
-                    <p class="product-price">20€</p>
-                    <p class="vinted-guide">This includes a Vinted guide</p>
-                </div>
+                <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
+                <h2 class="product-title">Airpods</h2>
+                <p class="product-price">20€</p>
+                <p class="vinted-guide">This includes a Vinted guide</p>
+                
+                <button class="buy-button" style="margin: 0 auto;" onclick="triggerPayPal()">BUY NOW</button>
                 
                 <div id="paypal-container-XKAUV6B33S4V2"></div>
+                <script>
+                  paypal.HostedButtons({ hostedButtonId: "XKAUV6B33S4V2" }).render("#paypal-container-XKAUV6B33S4V2")
+                </script>
             </div>
         </div>
     </div>
 
     <script>
+        function triggerPayPal() {
+            const ppButton = document.querySelector('#paypal-container-XKAUV6B33S4V2 .paypal-button');
+            if (ppButton) { ppButton.click(); } 
+            else { window.open('https://www.paypal.com/ncp/payment/XKAUV6B33S4V2', '_blank'); }
+        }
+
         function showSection(section) {
             document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
             document.getElementById('suppliers-section').style.display = section === 'suppliers' ? 'flex' : 'none';
             document.getElementById('items-section').style.display = section === 'items' ? 'flex' : 'none';
-            
-            // Renderöidään PayPal-nappi vain kun se on näkyvissä
-            if (section === 'items') {
-                const container = document.getElementById('paypal-container-XKAUV6B33S4V2');
-                if (container && container.innerHTML === "") {
-                    paypal.HostedButtons({
-                        hostedButtonId: "XKAUV6B33S4V2",
-                    }).render("#paypal-container-XKAUV6B33S4V2");
-                }
-            }
             window.scrollTo(0, 0); 
         }
         
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 100 },
+                "number": { "value": 80 },
                 "color": { "value": "#ffffff" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3 },
                 "size": { "value": 2 },
-                "move": { "enable": true, "speed": 1 }
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5 }
             }
         });
         document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
