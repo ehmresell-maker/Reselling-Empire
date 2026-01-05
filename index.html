@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reselling Empire</title>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAcVKUFDIE9PbCxKgdeX8DXpW4BY4l6GP9E0frwMPSUKji4XLzf4yL517-1s7jrUrlaAZQFybs0X__R0&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
@@ -35,15 +36,11 @@
             font-size: 3em;
             font-weight: 700;
             margin-bottom: 5px; 
-            color: #FFFFFF;
             text-align: center;
         }
 
         .sub-header {
             font-size: 1.5em;
-            font-weight: 400;
-            color: #ffffff;
-            margin-top: 0;
             margin-bottom: 30px; 
             text-align: center;
         }
@@ -55,7 +52,6 @@
             gap: 20px; 
             width: 100%;
             max-width: 1200px; 
-            margin-bottom: 20px;
         }
 
         .info-box {
@@ -72,13 +68,6 @@
             box-sizing: border-box; 
             background-color: rgba(25, 28, 32, 0.95);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .info-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .shop-button-area {
@@ -86,45 +75,22 @@
             flex-direction: column;
             gap: 30px;
             align-items: center;
-            margin-top: -20px;
+            padding: 20px 0;
         }
 
         .product-card {
-            position: relative; 
             width: 320px;
-            height: 540px; 
+            height: 520px; 
             background-color: rgba(25, 28, 32, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); 
-            transition: all 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
             box-sizing: border-box; 
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #444; 
-            color: white;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.8em;
-            font-weight: bold;
-            text-transform: uppercase;
-            z-index: 10;
         }
 
         .product-image {
@@ -132,38 +98,24 @@
             height: 200px; 
             object-fit: cover; 
             border-radius: 8px;
-            margin-bottom: 15px;
-            display: block;
-            transition: transform 0.3s ease-in-out;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05) rotate(2deg);
         }
 
         .product-title {
-            font-size: 1.6em;
-            color: #ffffff;
-            margin: 10px 0 5px 0;
-            min-height: 60px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
         }
 
-        .product-price { 
-            font-size: 1.5em; 
-            color: #ffffff; 
-            font-weight: bold; 
-            margin-bottom: 5px;
+        .product-price {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 5px 0;
         }
 
         .vinted-guide {
-            font-size: 0.8em;
-            color: #ffffff;
-            margin-bottom: 15px;
+            font-size: 0.9em;
             opacity: 0.8;
+            margin-bottom: 15px;
         }
 
         .buy-button {
@@ -176,24 +128,17 @@
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.2s;
-            box-sizing: border-box;
             text-align: center;
         }
 
-        .buy-button:hover {
-            background-color: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .site-footer {
-            margin-top: 30px; 
-            padding: 10px 0;
-            font-size: 0.9em;
-            color: #aaaaaa;
-            text-align: center;
-            width: 100%;
+        .back-button {
+            background: none;
+            border: none;
+            color: #ffffff; 
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-bottom: 20px;
         }
 
         @media (min-width: 768px) {
@@ -207,22 +152,9 @@
             #home-section.content-wrapper {
                 flex-direction: row; 
                 justify-content: center;
-                max-width: 1200px;
                 gap: 40px;
             }
         }
-        
-        .back-button {
-            background: none;
-            border: none;
-            color: #ffffff; 
-            font-size: 1.1em;
-            cursor: pointer;
-            padding: 5px 0;
-            margin-bottom: 20px;
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
@@ -234,112 +166,99 @@
 
     <div id="home-section" class="content-wrapper">
         <div class="info-box">
-            <p style="font-size: 1.2em; color: white; padding: 0 10px;">All suppliers are very trusted by people all around the world</p>
+            <p style="font-size: 1.2em;">All suppliers are very trusted by people all around the world</p>
         </div>
 
         <div class="shop-button-area">
-            <button class="buy-button" style="width: 250px; font-size: 1.3em; padding: 15px;" onclick="showSection('shop-suppliers')">SHOP SUPPLIERS</button>
-            <button class="buy-button" style="width: 250px; font-size: 1.3em; padding: 15px;" onclick="showSection('shop-items')">SHOP ITEMS</button>
+            <button class="buy-button" style="width: 250px; font-size: 1.3em;" onclick="showSection('suppliers')">SHOP SUPPLIERS</button>
+            <button class="buy-button" style="width: 250px; font-size: 1.3em;" onclick="showSection('items')">SHOP ITEMS</button>
         </div>
 
         <div class="info-box">
-            <p style="font-size: 1.2em; color: white; margin-bottom: 10px;">Rated 4.98/5</p>
-            <p style="font-size: 1.2em; color: white;">⭐⭐⭐⭐⭐</p>
+            <p style="font-size: 1.2em;">Rated 4.98/5<br>⭐⭐⭐⭐⭐</p>
         </div>
     </div> 
-    
-    <div id="supplier-section" class="content-wrapper" style="display: none;">
-        <div class="shop-container">
-            <button class="back-button" onclick="showSection('home')">← Back to Home</button>
-            <div class="product-grid"> 
-                <div class="product-card">
-                    <div class="badge">Best Deal</div>
-                    <div class="product-content">
-                        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Airpods" class="product-image">
-                        <h2 class="product-title">1:1 Airpod Supplier</h2>
-                        <p class="product-price">10€</p>
-                        <p class="vinted-guide">This includes a Vinted guide</p>
-                    </div>
-                    <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
-                </div>
 
-                <div class="product-card">
-                    <div class="product-content">
-                        <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Sp5der" class="product-image">
-                        <h2 class="product-title">1:1 Sp5der Supplier</h2>
-                        <p class="product-price">8€</p>
-                        <p class="vinted-guide">This includes a Vinted guide</p>
-                    </div>
-                    <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+    <div id="suppliers-section" class="content-wrapper" style="display: none;">
+        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <div class="product-grid"> 
+            <div class="product-card">
+                <div>
+                    <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
+                    <h2 class="product-title">1:1 Airpod Supplier</h2>
+                    <p class="product-price">10€</p>
+                    <p class="vinted-guide">This includes a Vinted guide</p>
                 </div>
+                <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button">BUY NOW</a>
+            </div>
 
-                <div class="product-card">
-                    <div class="badge">NEW!</div>
-                    <div class="product-content">
-                        <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" alt="Cologne" class="product-image">
-                        <h2 class="product-title">1:1 Cologne Supplier</h2>
-                        <p class="product-price">5€</p>
-                        <p class="vinted-guide">This includes a Vinted guide</p>
-                    </div>
-                    <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+            <div class="product-card">
+                <div>
+                    <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" class="product-image">
+                    <h2 class="product-title">1:1 Sp5der Supplier</h2>
+                    <p class="product-price">8€</p>
+                    <p class="vinted-guide">This includes a Vinted guide</p>
                 </div>
+                <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button">BUY NOW</a>
+            </div>
+
+            <div class="product-card">
+                <div>
+                    <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" class="product-image">
+                    <h2 class="product-title">1:1 Cologne Supplier</h2>
+                    <p class="product-price">5€</p>
+                    <p class="vinted-guide">This includes a Vinted guide</p>
+                </div>
+                <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button">BUY NOW</a>
             </div>
         </div>
     </div>
 
     <div id="items-section" class="content-wrapper" style="display: none;">
-        <div class="shop-container">
-            <button class="back-button" onclick="showSection('home')">← Back to Home</button>
-            <div class="product-grid"> 
-                <div class="product-card">
-                    <div class="product-content">
-                        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Airpods" class="product-image">
-                        <h2 class="product-title">Airpods</h2>
-                        <p class="product-price">20€</p>
-                        <p class="vinted-guide">This includes a Vinted guide</p>
-                    </div>
-                    <a href="#" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <div class="product-grid"> 
+            <div class="product-card">
+                <div>
+                    <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
+                    <h2 class="product-title">Airpods</h2>
+                    <p class="product-price">20€</p>
+                    <p class="vinted-guide">This includes a Vinted guide</p>
                 </div>
-
-                <div class="product-card">
-                    <div class="product-content">
-                        <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Sp5der Hoodie" class="product-image">
-                        <h2 class="product-title">Sp5der Hoodie</h2>
-                        <p class="product-price">50€</p>
-                        <p class="vinted-guide">This includes a Vinted guide</p>
-                    </div>
-                    <a href="#" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
-                </div>
+                
+                <div id="paypal-container-XKAUV6B33S4V2"></div>
             </div>
         </div>
     </div>
 
-    <footer class="site-footer">
-        <p>Have questions? Join our <a href="https://discord.gg/QG5FH8wPAs" target="_blank" style="color:white;">Discord</a>.</p>
-    </footer>
-
     <script>
         function showSection(section) {
             document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
-            document.getElementById('supplier-section').style.display = section === 'shop-suppliers' ? 'flex' : 'none';
-            document.getElementById('items-section').style.display = section === 'shop-items' ? 'flex' : 'none';
+            document.getElementById('suppliers-section').style.display = section === 'suppliers' ? 'flex' : 'none';
+            document.getElementById('items-section').style.display = section === 'items' ? 'flex' : 'none';
+            
+            // Renderöidään PayPal-nappi vain kun se on näkyvissä
+            if (section === 'items') {
+                const container = document.getElementById('paypal-container-XKAUV6B33S4V2');
+                if (container && container.innerHTML === "") {
+                    paypal.HostedButtons({
+                        hostedButtonId: "XKAUV6B33S4V2",
+                    }).render("#paypal-container-XKAUV6B33S4V2");
+                }
+            }
             window.scrollTo(0, 0); 
         }
         
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 100 },
                 "color": { "value": "#ffffff" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3 },
-                "size": { "value": 2, "random": true },
+                "size": { "value": 2 },
                 "move": { "enable": true, "speed": 1 }
-            },
-            "retina_detect": true
+            }
         });
-        
         document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
     </script>
-
 </body>
 </html>
