@@ -8,9 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
-        /* ========================================= */
-        /* HIUKKASTAUSTA (PARTICLES) */
-        /* ========================================= */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -21,9 +18,6 @@
             background-color: #121212;
         }
 
-        /* ========================================= */
-        /* YLEISET TYYLIT */
-        /* ========================================= */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #ffffff;
@@ -64,7 +58,6 @@
             margin-bottom: 20px;
         }
 
-        /* INFO BOX */
         .info-box {
             width: 250px; 
             height: 300px; 
@@ -88,11 +81,18 @@
             border-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* TUOTEKORTTI */
+        .shop-button-area {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Väli nappien välillä */
+            align-items: center;
+            margin-top: -20px; /* Nosti nappeja ylemmäs */
+        }
+
         .product-card {
             position: relative; 
             width: 320px;
-            height: 520px; 
+            height: 540px; 
             background-color: rgba(25, 28, 32, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
@@ -140,7 +140,6 @@
 
         .product-card:hover .product-image {
             transform: scale(1.05) rotate(2deg);
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
         }
 
         .product-title {
@@ -157,15 +156,14 @@
             font-size: 1.5em; 
             color: #ffffff; 
             font-weight: bold; 
-            margin: 10px 0 0 0; /* Muokattu marginaalia */
+            margin-bottom: 5px;
         }
 
-        /* UUSI TYYLI VINTED-OPPAALLE */
-        .vinted-guide-text {
-            font-size: 0.85em;
+        .vinted-guide {
+            font-size: 0.8em;
             color: #ffffff;
             margin-bottom: 15px;
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         .buy-button {
@@ -197,10 +195,6 @@
             text-align: center;
             width: 100%;
         }
-        .site-footer a { 
-            color: #ffffff; 
-            text-decoration: underline; 
-        }
 
         @media (min-width: 768px) {
             .product-grid {
@@ -226,6 +220,7 @@
             cursor: pointer;
             padding: 5px 0;
             margin-bottom: 20px;
+            text-decoration: underline;
         }
 
     </style>
@@ -243,7 +238,8 @@
         </div>
 
         <div class="shop-button-area">
-            <button class="buy-button" style="width: 250px; font-size: 1.5em; padding: 20px;" onclick="showSection('shop')">SHOP NOW</button>
+            <button class="buy-button" style="width: 250px; font-size: 1.3em; padding: 15px;" onclick="showSection('shop-suppliers')">SHOP SUPPLIERS</button>
+            <button class="buy-button" style="width: 250px; font-size: 1.3em; padding: 15px;" onclick="showSection('shop-items')">SHOP ITEMS</button>
         </div>
 
         <div class="info-box">
@@ -252,19 +248,18 @@
         </div>
     </div> 
     
-    <div id="shop-section" class="content-wrapper" style="display: none; flex-direction: column;">
+    <div id="supplier-section" class="content-wrapper" style="display: none;">
         <div class="shop-container">
             <button class="back-button" onclick="showSection('home')">← Back to Home</button>
-            
+            <h2 style="text-align: center; margin-bottom: 30px;">Supplier Links</h2>
             <div class="product-grid"> 
-                
                 <div class="product-card">
                     <div class="badge">Best Deal</div>
                     <div class="product-content">
                         <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Airpods" class="product-image">
                         <h2 class="product-title">1:1 Airpod Supplier</h2>
                         <p class="product-price">10€</p>
-                        <p class="vinted-guide-text">This includes a Vinted guide</p>
+                        <p class="vinted-guide">This includes a Vinted guide</p>
                     </div>
                     <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
                 </div>
@@ -274,7 +269,7 @@
                         <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Sp5der" class="product-image">
                         <h2 class="product-title">1:1 Sp5der Supplier</h2>
                         <p class="product-price">8€</p>
-                        <p class="vinted-guide-text">This includes a Vinted guide</p>
+                        <p class="vinted-guide">This includes a Vinted guide</p>
                     </div>
                     <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
                 </div>
@@ -285,45 +280,72 @@
                         <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" alt="Cologne" class="product-image">
                         <h2 class="product-title">1:1 Cologne Supplier</h2>
                         <p class="product-price">5€</p>
-                        <p class="vinted-guide-text">This includes a Vinted guide</p>
+                        <p class="vinted-guide">This includes a Vinted guide</p>
                     </div>
                     <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="items-section" class="content-wrapper" style="display: none;">
+        <div class="shop-container">
+            <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+            <h2 style="text-align: center; margin-bottom: 30px;">Physical Items</h2>
+            <div class="product-grid"> 
+                <div class="product-card">
+                    <div class="product-content">
+                        <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" alt="Airpods" class="product-image">
+                        <h2 class="product-title">Airpods</h2>
+                        <p class="product-price">25€</p>
+                        <p class="vinted-guide">This includes a Vinted guide</p>
+                    </div>
+                    <a href="#" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-content">
+                        <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" alt="Sp5der Hoodie" class="product-image">
+                        <h2 class="product-title">Sp5der Hoodie</h2>
+                        <p class="product-price">45€</p>
+                        <p class="vinted-guide">This includes a Vinted guide</p>
+                    </div>
+                    <a href="#" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-content">
+                        <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" alt="Cologne" class="product-image">
+                        <h2 class="product-title">Cologne</h2>
+                        <p class="product-price">30€</p>
+                        <p class="vinted-guide">This includes a Vinted guide</p>
+                    </div>
+                    <a href="#" class="buy-button" style="width: 85%; margin: 0 auto;">BUY NOW</a>
+                </div>
             </div>
         </div>
     </div>
 
     <footer class="site-footer">
-        <p>Have questions or feedback? <br> Join our <a href="https://discord.gg/QG5FH8wPAs" target="_blank">Reselling Empire Discord</a>.</p>
+        <p>Have questions? Join our <a href="https://discord.gg/QG5FH8wPAs" target="_blank" style="color:white;">Discord</a>.</p>
     </footer>
 
     <script>
         function showSection(section) {
             document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
-            document.getElementById('shop-section').style.display = section === 'shop' ? 'flex' : 'none';
+            document.getElementById('supplier-section').style.display = section === 'shop-suppliers' ? 'flex' : 'none';
+            document.getElementById('items-section').style.display = section === 'shop-items' ? 'flex' : 'none';
             window.scrollTo(0, 0); 
         }
         
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#ffffff" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.5 },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": false },
-                "move": { "enable": true, "speed": 0.5, "direction": "none", "out_mode": "out" }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "bubble" },
-                    "onclick": { "enable": true, "mode": "push" }
-                },
-                "modes": {
-                    "bubble": { "distance": 100, "size": 4 }
-                }
+                "opacity": { "value": 0.3 },
+                "size": { "value": 2, "random": true },
+                "move": { "enable": true, "speed": 1 }
             },
             "retina_detect": true
         });
