@@ -9,169 +9,290 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
-        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background-color: #121212; }
-        body { font-family: 'Segoe UI', sans-serif; color: #ffffff; margin: 0; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; min-height: 100vh; box-sizing: border-box; width: 100%; }
-        
-        .main-header { font-size: clamp(2.5em, 8vw, 4em); font-weight: 700; margin-bottom: 10px; text-align: center; }
-        .sub-header { font-size: clamp(1.2em, 4vw, 1.8em); margin-bottom: 60px; text-align: center; opacity: 0.9; }
-        
-        /* ETUSIVUN PAÄ-ASETTELU */
-        .content-wrapper { 
+        /* Yleiset asetukset */
+        body { 
+            font-family: 'Oswald', 'Segoe UI', sans-serif; 
+            background-color: #000000; 
+            color: #ffffff; 
+            margin: 0; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            gap: 40px; 
+            padding: 20px; 
+            min-height: 100vh; 
+            box-sizing: border-box; 
+            overflow-x: hidden;
+        }
+
+        #particles-js { 
+            position: fixed; 
+            width: 100%; 
+            height: 100%; 
+            top: 0; 
+            left: 0; 
+            z-index: 1; 
+            pointer-events: none;
+        }
+
+        /* Yläpalkki */
+        .top-ticker {
+            width: 100%;
+            background: #000;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 12px 0;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .ticker-item { color: #aaa; }
+        .ticker-highlight { color: #00aaff; font-weight: bold; }
+
+        /* Otsikot */
+        .header-container {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-header { 
+            font-size: clamp(2.5em, 8vw, 4.5em); 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin: 0;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+        
+        .main-header span { color: #00aaff; }
+
+        .sub-header { 
+            font-size: 1.5em; 
+            margin-top: 15px; 
+            opacity: 0.8; 
+        }
+
+        .rating { color: #ffcc00; font-size: 1.3em; margin-top: 10px; }
+
+        /* Tuotekortit */
+        .content-wrapper { 
+            position: relative;
+            z-index: 10;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
             width: 100%; 
             max-width: 1200px; 
         }
 
-        .info-box { 
+        .product-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             width: 100%;
-            max-width: 320px; 
-            min-height: 220px; 
-            border: 2px solid rgba(255, 255, 255, 0.2); 
-            border-radius: 15px; 
+            margin-top: 40px;
+        }
+
+        .product-card { 
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            border: 1px solid #222; 
+            border-radius: 20px; 
             padding: 30px; 
             text-align: center; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            background-color: rgba(25, 28, 32, 0.95); 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            box-sizing: border-box;
+            transition: all 0.4s ease;
         }
 
-        .shop-button-area { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 25px; 
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #00aaff;
+            box-shadow: 0 10px 30px rgba(0, 170, 255, 0.15);
+        }
+
+        /* Kortin kuva-alue */
+        .image-container {
+            width: 100%;
+            height: 250px;
+            background: #050505;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid #1a1a1a;
+            overflow: hidden;
+        }
+
+        .product-image { 
             width: 100%; 
-            align-items: center; 
+            height: 100%; 
+            object-fit: cover;
         }
 
-        /* TUOTEKORTIT */
-        .product-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; width: 100%; padding-bottom: 50px; }
-        .product-card { 
-            width: 100%;
-            max-width: 340px; 
-            background-color: rgba(25, 28, 32, 0.95); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 16px; 
-            padding: 25px; 
-            text-align: center; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            box-sizing: border-box;
-        }
-
-        .product-image { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
-        .product-title { font-size: 1.8em; font-weight: bold; margin: 10px 0; }
-        .product-price { font-size: 1.5em; font-weight: bold; margin: 10px 0; }
-        .vinted-guide { font-size: 0.9em; opacity: 0.7; margin-bottom: 25px; }
-
-        /* NAPIT */
-        .buy-button { 
-            display: block; 
-            background-color: transparent; 
-            color: white; 
-            padding: 18px; 
-            text-decoration: none; 
-            border: 2px solid white; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            font-weight: 700; 
-            text-align: center; 
-            transition: all 0.3s ease; 
-            width: 100%;
-            max-width: 280px;
-            box-sizing: border-box;
+        .image-placeholder {
+            text-align: center;
             text-transform: uppercase;
+            font-weight: 900;
         }
-        .buy-button:hover { background-color: white; color: black; transform: translateY(-5px); }
-        .back-button { background: none; border: none; color: #ffffff; font-size: 1.1em; cursor: pointer; text-decoration: underline; margin-bottom: 40px; }
+
+        .blue-text { color: #00aaff; font-size: 1.2em; display: block; }
+        .white-text { color: #ffffff; font-size: 1.5em; display: block; font-style: italic; }
+
+        .product-title { 
+            font-size: 1.5em; 
+            text-transform: uppercase; 
+            margin: 10px 0; 
+            letter-spacing: 1px;
+        }
+
+        .product-price { 
+            font-size: 1.2em; 
+            color: #888; 
+            margin-bottom: 25px; 
+        }
+
+        /* Napit */
+        .buy-button { 
+            display: inline-block; 
+            background: transparent; 
+            color: #fff; 
+            padding: 14px 0; 
+            border: 1px solid #333; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            transition: 0.3s;
+            cursor: pointer;
+            width: 90%;
+            font-size: 0.9em;
+        }
+
+        .buy-button:hover { 
+            background: #fff; 
+            color: #000; 
+            border-color: #fff;
+        }
+
+        /* Navigointi */
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .nav-btn {
+            background: #00aaff;
+            color: #000;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
+        }
+
+        .back-button {
+            color: #00aaff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
 
         #paypal-container-XKAUV6B33S4V2 { display: none; }
-
-        /* TIETOKONENÄKYMÄN KORJAUS (ESTÄÄ PÄÄLLEKKÄISYYDEN) */
-        @media (min-width: 1024px) {
-            #home-section.content-wrapper { 
-                flex-direction: row; /* Laittaa elementit rinnakkain */
-                justify-content: center; 
-                align-items: stretch;
-                gap: 50px;
-            }
-            .shop-button-area { 
-                justify-content: center; 
-                width: auto;
-            }
-            .product-grid { 
-                flex-direction: row; 
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 40px; 
-            }
-        }
     </style>
 </head>
 <body>
 
+    <div class="top-ticker">
+        <div class="ticker-item">Rated <span class="ticker-highlight">4.98/5</span> ⭐</div>
+        <div class="ticker-item"><span class="ticker-highlight">14</span> Live viewers</div>
+        <div class="ticker-item"><span class="ticker-highlight">812</span> Happy customers</div>
+    </div>
+
     <div id="particles-js"></div> 
-    <h1 class="main-header">Reselling Empire</h1>
-    <h2 class="sub-header">Best Vendors In The Game</h2>
+
+    <div class="header-container">
+        <h1 class="main-header">ACCESS TO THE WORLD'S <span>BEST</span> SUPPLIERS</h1>
+        <div class="sub-header">Rated 4.98/5 by 1k+ Resellers</div>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+    </div>
 
     <div id="home-section" class="content-wrapper">
-        <div class="info-box">
-            <p style="font-size: 1.3em; line-height: 1.4;">All suppliers are very trusted by people all around the world</p>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="showSection('suppliers')">Suppliers</button>
+            <button class="nav-btn" onclick="showSection('items')">Items</button>
         </div>
-
-        <div class="shop-button-area">
-            <button class="buy-button" onclick="showSection('suppliers')">SHOP SUPPLIERS</button>
-            <button class="buy-button" onclick="showSection('items')">SHOP ITEMS</button>
-        </div>
-
-        <div class="info-box">
-            <p style="font-size: 1.3em;">Rated 4.98/5<br><span style="color: #ffcc00; font-size: 1.2em;">⭐⭐⭐⭐⭐</span></p>
+        
+        <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; max-width: 450px;">
+            <p style="margin: 0; color: #aaa; line-height: 1.6;">All suppliers are very trusted by people all around the world.</p>
         </div>
     </div> 
 
     <div id="suppliers-section" class="content-wrapper" style="display: none;">
-        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <button class="back-button" onclick="showSection('home')">← Back to Selection</button>
         <div class="product-grid"> 
+            
             <div class="product-card">
-                <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
-                <h2 class="product-title">1:1 Airpod Supplier</h2>
-                <p class="product-price">10€</p>
-                <p class="vinted-guide">This includes a Vinted guide</p>
-                <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button" style="margin: 0 auto;">BUY NOW</a>
+                <div class="image-container">
+                    <img src="https://kennyresells.com/cdn/shop/files/17.png?v=1763693694&width=500" class="product-image" alt="Earpod Supplier">
+                </div>
+                <h2 class="product-title">1:1 Earpod Supplier</h2>
+                <p class="product-price">10.00 EUR</p>
+                <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button">Add to cart</a>
             </div>
+
             <div class="product-card">
-                <img src="https://www.nowelstore.cz/user/categories/orig/sp5der-logo.jpg" class="product-image">
+                <div class="image-container">
+                    <div class="image-placeholder">
+                        <span class="blue-text">ALL SP5DER</span>
+                        <span class="white-text">SUPPLIER</span>
+                    </div>
+                </div>
                 <h2 class="product-title">1:1 Sp5der Supplier</h2>
-                <p class="product-price">8€</p>
-                <p class="vinted-guide">This includes a Vinted guide</p>
-                <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button" style="margin: 0 auto;">BUY NOW</a>
+                <p class="product-price">8.00 EUR</p>
+                <a href="https://www.paypal.com/ncp/payment/4B43P5N8526ZN" target="_blank" class="buy-button">Add to cart</a>
             </div>
+
             <div class="product-card">
-                <img src="https://cdn.flaconi.net/media/catalog/product/3/6/3614274350739.jpg?r=1UwbvK&c=fi&w=1024&fl=progressive&fit=scale&q=80" class="product-image">
+                <div class="image-container">
+                    <img src="https://kennyresells.com/cdn/shop/files/7.png?v=1763693694&width=500" class="product-image" alt="Cologne Supplier">
+                </div>
                 <h2 class="product-title">1:1 Cologne Supplier</h2>
-                <p class="product-price">5€</p>
-                <p class="vinted-guide">This includes a Vinted guide</p>
-                <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button" style="margin: 0 auto;">BUY NOW</a>
+                <p class="product-price">5.00 EUR</p>
+                <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button">Add to cart</a>
             </div>
         </div>
     </div>
 
     <div id="items-section" class="content-wrapper" style="display: none;">
-        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <button class="back-button" onclick="showSection('home')">← Back to Selection</button>
         <div class="product-grid"> 
             <div class="product-card">
-                <img src="https://cdn.fastpixel.io/fp/ret_img+v_4216+w_1200+h_669+q_lossless+to_webp/www.bosshunting.com.au%2Fwp-content%2Fuploads%2F2022%2F09%2Fairpods-pro-2.jpg" class="product-image">
-                <h2 class="product-title">Airpods</h2>
-                <p class="product-price">20€</p>
-                <p class="vinted-guide">This includes a Vinted guide</p>
-                
-                <button class="buy-button" style="margin: 0 auto;" onclick="triggerPayPal()">BUY NOW</button>
-                
+                <div class="image-container">
+                    <img src="https://worldresellers.shop/cdn/shop/files/269B14E5-CD83-4045-8322-FD28161BCBEF.jpg?v=1766610123&width=832" class="product-image" alt="Fairpods">
+                </div>
+                <h2 class="product-title">Fairpods</h2>
+                <p class="product-price">20.00 EUR</p>
+                <button class="buy-button" onclick="triggerPayPal()">Add to cart</button>
                 <div id="paypal-container-XKAUV6B33S4V2"></div>
                 <script>
                   paypal.HostedButtons({ hostedButtonId: "XKAUV6B33S4V2" }).render("#paypal-container-XKAUV6B33S4V2")
@@ -189,21 +310,26 @@
 
         function showSection(section) {
             document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
-            document.getElementById('suppliers-section').style.display = section === 'suppliers' ? 'flex' : 'none';
-            document.getElementById('items-section').style.display = section === 'items' ? 'flex' : 'none';
+            document.getElementById('suppliers-section').style.display = section === 'suppliers' ? 'grid' : 'none';
+            document.getElementById('items-section').style.display = section === 'items' ? 'grid' : 'none';
             window.scrollTo(0, 0); 
         }
         
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 80 },
-                "color": { "value": "#ffffff" },
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00aaff" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.3 },
-                "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 1.5 }
-            }
+                "opacity": { "value": 0.2, "random": true },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00aaff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 0.8, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false } }
+            },
+            "retina_detect": true
         });
         document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
     </script>
