@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reselling Empire</title>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAcVKUFDiE9PbQcxKgdeX8DXpW4BY4l6GP9E0frwMPSUKji4XLzf4yL517-1s7jrUrlaAZQFybs0X__R0&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
@@ -99,7 +98,6 @@
         .nav-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 170, 255, 0.4); }
         
         .back-button { color: #00aaff; background: none; border: none; cursor: pointer; font-size: 1em; margin-bottom: 30px; text-transform: uppercase; font-weight: bold; }
-        #paypal-container-XKAUV6B33S4V2 { display: none; }
     </style>
 </head>
 <body>
@@ -132,42 +130,37 @@
             <button class="nav-btn" onclick="showSection('items')">Items</button>
         </div>
         <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; max-width: 450px;">
-            <p style="margin: 0; color: #aaa; line-height: 1.6;">All suppliers are very trusted by people all around the world.</p>
+            <p style="margin: 0; color: #aaa; line-height: 1.6;">
+                All suppliers are very trusted by people all around the world.<br>
+                <b>When you buy the supplier add your Discord and Gmail address to the message.</b><br>
+                Discord: .00000000000000000o. or xyz023651
+            </p>
         </div>
     </div> 
 
     <div id="suppliers-section" class="content-wrapper" style="display: none;">
         <button class="back-button" onclick="showSection('home')">← Back to Selection</button>
         <div class="product-grid"> 
-            
             <div class="product-card">
-                <div class="image-container">
-                    <img src="https://kennyresells.com/cdn/shop/files/KennyResells_6.png?v=1763693683&width=500" class="product-image" alt="Reselling Guide">
-                </div>
+                <div class="image-container"><img src="https://kennyresells.com/cdn/shop/files/KennyResells_6.png" class="product-image"></div>
                 <h2 class="product-title">Reselling Guide</h2>
-                <p class="product-desc">Learn how to flip products for maximum profit. Includes tips on scaling, the best platforms to sell on, and how to avoid common mistakes.</p>
+                <p class="product-desc">Learn how to flip products for maximum profit.</p>
                 <p class="product-price">5.00 EUR</p>
-                <a href="https://www.paypal.com/ncp/payment/PM7USMB6LGDS6" target="_blank" class="buy-button">Add to cart</a>
+                <a href="https://www.paypal.me/ehm472/5" target="_blank" class="buy-button">Buy Now (5€)</a>
             </div>
-
             <div class="product-card">
-                <div class="image-container">
-                    <img src="https://kennyresells.com/cdn/shop/files/17.png?v=1763693694&width=500" class="product-image" alt="Earpod Supplier">
-                </div>
+                <div class="image-container"><img src="https://kennyresells.com/cdn/shop/files/17.png" class="product-image"></div>
                 <h2 class="product-title">1:1 Earpod Supplier</h2>
-                <p class="product-desc">High-quality 1:1 earpods with all the features. The most reliable supplier in the market.</p>
+                <p class="product-desc">High-quality 1:1 earpods with all the features.</p>
                 <p class="product-price">10.00 EUR</p>
-                <a href="https://www.paypal.com/ncp/payment/SB2Y4RCNQE87G" target="_blank" class="buy-button">Add to cart</a>
+                <a href="https://www.paypal.me/ehm472/10" target="_blank" class="buy-button">Buy Now (10€)</a>
             </div>
-
             <div class="product-card">
-                <div class="image-container">
-                    <img src="https://kennyresells.com/cdn/shop/files/7.png?v=1763693694&width=500" class="product-image" alt="Cologne Supplier">
-                </div>
+                <div class="image-container"><img src="https://kennyresells.com/cdn/shop/files/7.png" class="product-image"></div>
                 <h2 class="product-title">1:1 Cologne Supplier</h2>
-                <p class="product-desc">Access top-tier fragrance suppliers. 1:1 quality that smells and lasts like the original.</p>
+                <p class="product-desc">Access top-tier fragrance suppliers.</p>
                 <p class="product-price">5.00 EUR</p>
-                <a href="https://www.paypal.com/ncp/payment/GE6SVM6LTXPAE" target="_blank" class="buy-button">Add to cart</a>
+                <a href="https://www.paypal.me/ehm472/5" target="_blank" class="buy-button">Buy Now (5€)</a>
             </div>
         </div>
     </div>
@@ -176,24 +169,18 @@
         <button class="back-button" onclick="showSection('home')">← Back to Selection</button>
         <div class="product-grid"> 
             <div class="product-card">
-                <div class="image-container">
-                    <img src="https://worldresellers.shop/cdn/shop/files/269B14E5-CD83-4045-8322-FD28161BCBEF.jpg?v=1766610123&width=832" class="product-image" alt="Fairpods">
-                </div>
+                <div class="image-container"><img src="https://worldresellers.shop/cdn/shop/files/269B14E5-CD83-4045-8322-FD28161BCBEF.jpg" class="product-image"></div>
                 <h2 class="product-title">Fairpods</h2>
-                <p class="product-desc">Premium quality earbuds ready to ship. Perfect for starting your own inventory.</p>
-                <p class="product-price">20.00 EUR</p>
-                <button class="buy-button" onclick="triggerPayPal()">Add to cart</button>
-                <div id="paypal-container-XKAUV6B33S4V2"></div>
-                <script>
-                  paypal.HostedButtons({ hostedButtonId: "XKAUV6B33S4V2" }).render("#paypal-container-XKAUV6B33S4V2")
-                </script>
+                <p class="product-desc">Premium quality earbuds ready to ship.</p>
+                <p class="product-price">50.00 EUR</p>
+                <a href="https://www.paypal.me/ehm472/50" target="_blank" class="buy-button">Buy Now (50€)</a>
             </div>
         </div>
     </div>
 
     <script>
         const names = ["Markus_04", "EetuResells", "NiklasV", "Joonas.K", "Matias_A", "Kasperi22", "Olli_R", "Lauri_B", "Sami.S", "Aleksi_V", "Niko_Resell", "Eemil_H", "Tuomas_9", "Ville_V", "Frans.A"];
-        const products = ["the Earpod Supplier", "the Sp5der Supplier", "the Cologne Supplier", "Fairpods", "the Reselling Guide"];
+        const productsList = ["the Earpod Supplier", "the Sp5der Supplier", "the Cologne Supplier", "Fairpods", "the Reselling Guide"];
         const times = ["just now", "1 minute ago", "2 minutes ago", "just a second ago"];
         const otherFlags = ["🇸🇪", "🇳🇴", "🇩🇰", "🇩🇪", "🇪🇪", "🇫🇷", "🇳🇱", "🇪🇸"];
 
@@ -206,21 +193,13 @@
             let flag = "🇫🇮";
             if (Math.random() < 0.2) { flag = otherFlags[Math.floor(Math.random() * otherFlags.length)]; }
             userSpan.innerText = randomName + " " + flag;
-            productSpan.innerText = products[Math.floor(Math.random() * products.length)];
+            productSpan.innerText = productsList[Math.floor(Math.random() * productsList.length)];
             timeSpan.innerText = times[Math.floor(Math.random() * times.length)];
             notif.classList.add('show');
             setTimeout(() => { notif.classList.remove('show'); }, 5000);
-            const nextDelay = Math.floor(Math.random() * (19000 - 11000 + 1)) + 11000;
-            setTimeout(showNotification, nextDelay);
+            setTimeout(showNotification, Math.floor(Math.random() * 8000) + 11000);
         }
-
         setTimeout(showNotification, 4000);
-
-        function triggerPayPal() {
-            const ppButton = document.querySelector('#paypal-container-XKAUV6B33S4V2 .paypal-button');
-            if (ppButton) { ppButton.click(); } 
-            else { window.open('https://www.paypal.com/ncp/payment/XKAUV6B33S4V2', '_blank'); }
-        }
 
         function showSection(section) {
             document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
@@ -237,10 +216,8 @@
                 "opacity": { "value": 0.2, "random": true },
                 "size": { "value": 2, "random": true },
                 "line_linked": { "enable": true, "distance": 150, "color": "#00aaff", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 0.8, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-            },
-            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" } } },
-            "retina_detect": true
+                "move": { "enable": true, "speed": 0.8 }
+            }
         });
         document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
     </script>
