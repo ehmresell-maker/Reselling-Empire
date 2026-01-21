@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reselling Empire</title>
+    <title>Reselling Empire - Maintenance</title>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
-        body { 
-            font-family: 'Oswald', 'Segoe UI', sans-serif; 
+        body, html { 
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             background-color: #000000; 
             color: #ffffff; 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding: 20px; 
-            min-height: 100vh; 
-            box-sizing: border-box; 
-            overflow-x: hidden;
+            font-family: 'Oswald', 'Segoe UI', sans-serif; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #particles-js { 
@@ -29,197 +29,76 @@
             top: 0; 
             left: 0; 
             z-index: 1; 
-            pointer-events: none;
         }
 
-        .top-ticker {
-            width: 100%;
-            background: #000;
-            border-bottom: 1px solid #1a1a1a;
-            padding: 12px 0;
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+        .maintenance-container {
             position: relative;
             z-index: 10;
+            text-align: center;
+            padding: 20px;
         }
 
-        .ticker-highlight { color: #00aaff; font-weight: bold; }
-
-        .sales-notification {
-            position: fixed;
-            bottom: 20px;
-            left: -450px; 
-            background: rgba(15, 15, 15, 0.95);
-            border: 1px solid #00aaff;
-            border-radius: 12px;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 9999;
-            box-shadow: 0 10px 30px rgba(0, 170, 255, 0.2);
-            transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-width: 320px;
+        .main-header {
+            font-size: clamp(2.5em, 10vw, 5em);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
         }
 
-        .sales-notification.show { left: 20px; }
-        .notif-content { font-size: 0.9em; line-height: 1.4; color: #eee; }
-        .notif-name { color: #00aaff; font-weight: bold; }
-        .notif-time { font-size: 0.75em; color: #666; display: block; margin-top: 3px; }
+        .main-header span {
+            color: #00aaff;
+        }
 
-        .header-container { text-align: center; margin: 60px 0; position: relative; z-index: 10; }
-        .main-header { font-size: clamp(2.5em, 8vw, 4.5em); font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: 2px; line-height: 1.1; }
-        .main-header span { color: #00aaff; }
-        .sub-header { font-size: 1.5em; margin-top: 15px; opacity: 0.8; }
-        .rating { color: #ffcc00; font-size: 1.3em; margin-top: 10px; }
-        
-        .content-wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1200px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 40px; }
-        
-        .product-card { background: linear-gradient(145deg, #0f0f0f, #1a1a1a); border: 1px solid #222; border-radius: 20px; padding: 30px; text-align: center; transition: all 0.4s ease; display: flex; flex-direction: column; }
-        .product-card:hover { transform: translateY(-10px); border-color: #00aaff; box-shadow: 0 10px 30px rgba(0, 170, 255, 0.15); }
-        
-        .image-container { width: 100%; height: 250px; background: #050505; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; position: relative; border: 1px solid #1a1a1a; overflow: hidden; }
-        .product-image { width: 100%; height: 100%; object-fit: cover; }
-        
-        .product-title { font-size: 1.5em; text-transform: uppercase; margin: 10px 0; letter-spacing: 1px; }
-        .product-desc { font-size: 0.9em; color: #aaa; margin-bottom: 20px; line-height: 1.5; min-height: 60px; }
-        .product-price { font-size: 1.2em; color: #fff; font-weight: bold; margin-bottom: 25px; }
-        
-        .buy-button { display: block; background: transparent; color: #fff; padding: 14px 0; border: 1px solid #333; border-radius: 10px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; cursor: pointer; width: 100%; font-size: 0.9em; text-align: center; margin-top: auto; }
-        .buy-button:hover { background: #fff; color: #000; border-color: #fff; }
-        
-        .nav-buttons { display: flex; gap: 20px; margin-bottom: 50px; }
-        .nav-btn { background: #00aaff; color: #000; padding: 18px 50px; border-radius: 50px; font-weight: 900; text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s; font-size: 1em; letter-spacing: 1px; }
-        .nav-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 170, 255, 0.4); }
-        
-        .back-button { color: #00aaff; background: none; border: none; cursor: pointer; font-size: 1em; margin-bottom: 30px; text-transform: uppercase; font-weight: bold; }
+        .sub-text {
+            font-size: 1.2em;
+            margin-top: 20px;
+            opacity: 0.6;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .loader {
+            margin-top: 40px;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 170, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #00aaff;
+            animation: spin 1s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
 
-    <div id="sales-notif" class="sales-notification">
-        <div class="notif-content">
-            <span class="notif-name" id="notif-user">Markus_04 🇫🇮</span> just bought 
-            <span id="notif-product">the Earpod Supplier</span>!
-            <span class="notif-time" id="notif-time">just now</span>
-        </div>
-    </div>
-
-    <div class="top-ticker">
-        <div class="ticker-item">Rated <span class="ticker-highlight">4.98/5</span> ⭐</div>
-        <div class="ticker-item"><span class="ticker-highlight">14</span> Live viewers</div>
-        <div class="ticker-item"><span class="ticker-highlight">812</span> Happy customers</div>
-    </div>
-
     <div id="particles-js"></div> 
 
-    <div class="header-container">
-        <h1 class="main-header">ACCESS TO THE WORLD'S <span>BEST</span> SUPPLIERS</h1>
-        <div class="sub-header">Rated 4.98/5 by 1k+ Resellers</div>
-        <div class="rating">⭐⭐⭐⭐⭐</div>
-    </div>
-
-    <div id="home-section" class="content-wrapper">
-        <div class="nav-buttons">
-            <button class="nav-btn" onclick="showSection('suppliers')">Suppliers</button>
-            <button class="nav-btn" onclick="showSection('items')">Items</button>
-        </div>
-        <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; max-width: 450px;">
-            <p style="margin: 0; color: #aaa; line-height: 1.6;">
-                All suppliers are very trusted by people all around the world.<br>
-                <b>When you buy the supplier add your Discord and Gmail address to the message.</b><br>
-                Discord: ee.xyz or xyz023651
-            </p>
-        </div>
-    </div> 
-
-    <div id="suppliers-section" class="content-wrapper" style="display: none;">
-        <button class="back-button" onclick="showSection('home')">← Back to Selection</button>
-        <div class="product-grid"> 
-            <div class="product-card">
-                <div class="image-container"><img src="https://kennyresells.com/cdn/shop/files/KennyResells_6.png" class="product-image"></div>
-                <h2 class="product-title">Reselling Guide</h2>
-                <p class="product-desc">Learn how to flip products for maximum profit.</p>
-                <p class="product-price">5.00 EUR</p>
-                <a href="https://www.paypal.me/ehm472/5" target="_blank" class="buy-button">Buy Now (5€)</a>
-            </div>
-            <div class="product-card">
-                <div class="image-container"><img src="https://kennyresells.com/cdn/shop/files/17.png" class="product-image"></div>
-                <h2 class="product-title">1:1 Earpod Supplier</h2>
-                <p class="product-desc">High-quality 1:1 earpods with all the features.</p>
-                <p class="product-price">10.00 EUR</p>
-                <a href="https://www.paypal.me/ehm472/10" target="_blank" class="buy-button">Buy Now (10€)</a>
-            </div>
-            <div class="product-card">
-                <div class="image-container"><img src="https://kennyresells.com/cdn/shop/files/7.png" class="product-image"></div>
-                <h2 class="product-title">1:1 Cologne Supplier</h2>
-                <p class="product-desc">Access top-tier fragrance suppliers.</p>
-                <p class="product-price">5.00 EUR</p>
-                <a href="https://www.paypal.me/ehm472/5" target="_blank" class="buy-button">Buy Now (5€)</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="items-section" class="content-wrapper" style="display: none;">
-        <button class="back-button" onclick="showSection('home')">← Back to Selection</button>
-        <div class="product-grid"> 
-            <div class="product-card">
-                <div class="image-container"><img src="https://worldresellers.shop/cdn/shop/files/269B14E5-CD83-4045-8322-FD28161BCBEF.jpg" class="product-image"></div>
-                <h2 class="product-title">Fairpods</h2>
-                <p class="product-desc">Premium quality earbuds ready to ship.</p>
-                <p class="product-price">50.00 EUR</p>
-                <a href="https://www.paypal.me/ehm472/50" target="_blank" class="buy-button">Buy Now (50€)</a>
-            </div>
-        </div>
+    <div class="maintenance-container">
+        <h1 class="main-header">UNDER <span>MAINTENANCE</span></h1>
+        <p class="sub-text">We will be back shortly.</p>
+        <div class="loader"></div>
     </div>
 
     <script>
-        const names = ["Markus_04", "EetuResells", "NiklasV", "Joonas.K", "Matias_A", "Kasperi22", "Olli_R", "Lauri_B", "Sami.S", "Aleksi_V", "Niko_Resell", "Eemil_H", "Tuomas_9", "Ville_V", "Frans.A"];
-        const productsList = ["the Earpod Supplier", "the Sp5der Supplier", "the Cologne Supplier", "Fairpods", "the Reselling Guide"];
-        const times = ["just now", "1 minute ago", "2 minutes ago", "just a second ago"];
-        const otherFlags = ["🇸🇪", "🇳🇴", "🇩🇰", "🇩🇪", "🇪🇪", "🇫🇷", "🇳🇱", "🇪🇸"];
-
-        function showNotification() {
-            const notif = document.getElementById('sales-notif');
-            const userSpan = document.getElementById('notif-user');
-            const productSpan = document.getElementById('notif-product');
-            const timeSpan = document.getElementById('notif-time');
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            let flag = "🇫🇮";
-            if (Math.random() < 0.2) { flag = otherFlags[Math.floor(Math.random() * otherFlags.length)]; }
-            userSpan.innerText = randomName + " " + flag;
-            productSpan.innerText = productsList[Math.floor(Math.random() * productsList.length)];
-            timeSpan.innerText = times[Math.floor(Math.random() * times.length)];
-            notif.classList.add('show');
-            setTimeout(() => { notif.classList.remove('show'); }, 5000);
-            setTimeout(showNotification, Math.floor(Math.random() * 8000) + 11000);
-        }
-        setTimeout(showNotification, 4000);
-
-        function showSection(section) {
-            document.getElementById('home-section').style.display = section === 'home' ? 'flex' : 'none';
-            document.getElementById('suppliers-section').style.display = section === 'suppliers' ? 'grid' : 'none';
-            document.getElementById('items-section').style.display = section === 'items' ? 'grid' : 'none';
-            window.scrollTo(0, 0); 
-        }
-        
+        /* Partikkeli-efekti pidetään taustalla, jotta sivu ei ole ihan kuollut */
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#00aaff" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.2, "random": true },
+                "opacity": { "value": 0.3, "random": true },
                 "size": { "value": 2, "random": true },
                 "line_linked": { "enable": true, "distance": 150, "color": "#00aaff", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 0.8 }
+                "move": { "enable": true, "speed": 1 }
             }
         });
-        document.addEventListener('DOMContentLoaded', () => { showSection('home'); });
     </script>
 </body>
 </html>
